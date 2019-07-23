@@ -532,7 +532,7 @@ div.prism-show-language > div.prism-show-language-label {
 <h4 id="toc_1">Sales Report</h4>
 
 <p><img src="pic/SalesReport.png" alt="Sales Report">
-<img src="pic/NewSalesReport.png" alt="Sales Report">   </p>
+<img src="pic/NewSalesReport.png" alt="Sales Report"></p>
 
 <h5 id="toc_2">页面交互</h5>
 
@@ -570,21 +570,9 @@ div.prism-show-language > div.prism-show-language-label {
 <h5 id="toc_3">生成流程及内容、格式</h5>
 
 <ol>
-<li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align: left">SKU</th>
-<th style="text-align: left">Unit Cost</th>
-</tr>
-</thead>
-
-<tbody>
-</tbody>
-</table>
-
-<p>可以单个修改，也可上传 csv/xlsx 文件进行批量修改</p></li>
+<li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost<br>
+可以点击 Unit Cost 单元格单个修改，也可上传 csv/xlsx 文件进行批量修改。批量修改时新增 SKU 不存在的记录，更新 SKU 已存在的 Unit Cost。
+<img src="pic/ProductFee.png" alt="Sales Report"></p></li>
 <li><p>根据用户所选的 Merchant 和时间段从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
 数据的来源有  </p>
 
@@ -622,7 +610,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Product</td>
 <td style="text-align: left"><mark>Parent ASIN</mark></td>
-<td style="text-align: left">根据 SKU 从 Inventory History 中获取 (Parent) ASIN</td>
+<td style="text-align: left">根据 SKU 从 Inventory History 中获取 (Parent) ASIN，如果不存在就用 ASIN</td>
 </tr>
 <tr>
 <td style="text-align: left">Product</td>
@@ -900,7 +888,6 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <th style="text-align: left">Name</th>
 <th style="text-align: left">Formula</th>
-<th style="text-align: left">Error</th>
 <th style="text-align: left">Format</th>
 </tr>
 </thead>
@@ -909,157 +896,131 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Name</td>
 <td style="text-align: left">Data[General][Name]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 </tr>
 <tr>
 <td style="text-align: left">ASIN</td>
 <td style="text-align: left">Data[Product][ASIN]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 </tr>
 <tr>
 <td style="text-align: left">Parent ASIN</td>
 <td style="text-align: left">Data[Product][Parent ASIN]</td>
-<td style="text-align: left">Data[Product][ASIN]</td>
 <td style="text-align: left">STRING</td>
 </tr>
 <tr>
 <td style="text-align: left">SKU</td>
 <td style="text-align: left">Data[Product][SKU]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 </tr>
 <tr>
 <td style="text-align: left">Total Gross Sales</td>
 <td style="text-align: left">Data[Product][Total Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Total Gross Sales)</td>
 <td style="text-align: left">Current[Total Gross Sales] - Previous[Total Gross Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">Percentage</td>
 <td style="text-align: left">Current[Total Gross Sales][WOW Change]/Previous[Total Gross Salese]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Total Orders</td>
 <td style="text-align: left">Data[Total Orders]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">INTEGER</td>
 </tr>
 <tr>
 <td style="text-align: left">Total Units</td>
 <td style="text-align: left">Data[Total Units]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">INTEGER</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Total Units)</td>
 <td style="text-align: left">(Current[Total Units]-Previous[Total Units])/Previous[Total Units]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Discount</td>
 <td style="text-align: left">Data[Promos][Discounts]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">Promo Percentage</td>
 <td style="text-align: left">- Current[Discounts]/Current[Total Gross Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Net Refund</td>
 <td style="text-align: left">Data[Refunds][Net Refund]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">Refund Percentage</td>
 <td style="text-align: left">- Current[Net Refund]/Current[Total Gross Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Ads</td>
 <td style="text-align: left">Data[Cost][Ads]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">Ads Percentage</td>
 <td style="text-align: left">- Current[Ads]/Current[Total Gross Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">ROI</td>
 <td style="text-align: left">Data[Stats][ROI]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(ROI)</td>
 <td style="text-align: left">Current[ROI]-Previous[ROI]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Profit</td>
 <td style="text-align: left">Data[Net Profit][Net Profit]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Profit)</td>
 <td style="text-align: left">Current[Profit]-Previous[Profit]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 </tr>
 <tr>
 <td style="text-align: left">Margin</td>
 <td style="text-align: left">Data[Stats][Margin]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Margin)</td>
 <td style="text-align: left">Current[Margin]-Previous[Margin]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Sessions</td>
 <td style="text-align: left">Data[Sessions][Sessions]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">INTEGER</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Sessions)</td>
 <td style="text-align: left">(Current[Sessions]-Previous[Sessions])/Previous[Sessions]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">Unit Sess %</td>
 <td style="text-align: left">Data[Sessions][Unit Sess % ]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 <tr>
 <td style="text-align: left">WOW Change(Unit Sess %)</td>
 <td style="text-align: left">Current[Unit Sess %]-Previous[Unit Sess %]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 </tr>
 </tbody>
@@ -1494,7 +1455,6 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <th style="text-align: left">Name</th>
 <th style="text-align: left">Formula</th>
-<th style="text-align: left">Error</th>
 <th style="text-align: left">Format</th>
 <th style="text-align: left">Editable</th>
 </tr>
@@ -1504,132 +1464,113 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <td style="text-align: left">Name</td>
 <td style="text-align: left">PreSales[Name]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">ASIN</td>
 <td style="text-align: left">PreSales[ASIN]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Parent ASIN</td>
 <td style="text-align: left">PreSales[Parent ASIN]</td>
-<td style="text-align: left">PreSales[ASIN]</td>
 <td style="text-align: left">STRING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">SKU</td>
 <td style="text-align: left">PreSales[SKU]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">STRING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Total Gross Sales</td>
 <td style="text-align: left">PreSales[Total Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Profit</td>
 <td style="text-align: left">PreSales[Profit]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Gross Margin</td>
 <td style="text-align: left">PreSales[Promo Percentage] <code>+</code> PreSales[Ads Percentage] <code>+</code> PreSales[Margin]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Target Margin</td>
 <td style="text-align: left">PreBudget[Target Margin]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Target Profit</td>
 <td style="text-align: left">CurBudget[Total Gross Sales] * (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Real Margin</td>
 <td style="text-align: left">CurBudget[Gross Margin] <code>-</code> (CurBudget[Actual(Ads)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Review)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Social)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Promo)] <code>/</code>CurBudget[Total Gross Sales] <code>+</code>  CurBudget[Actual(Photo)] <code>/</code>CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Total Balance</td>
 <td style="text-align: left">CurBudget[Balance(Ads)] <code>+</code> CurBudget[Balance(Review)] <code>+</code> CurBudget[Balance(Social)] <code>+</code> CurBudget[Balance(Promo)] <code>+</code> CurBudget[Balance(Photo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Portion(Ads)</td>
 <td style="text-align: left">PreBudget[Portion(Ads)]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Budget(Ads)</td>
 <td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Ads)] <code>?</code> CurBudget[Portion(Ads)] <code>:</code> CurBudget_line1[11]) <code>*</code> CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Actual(Ads)</td>
 <td style="text-align: left">PreSales[Ads Percentage] <code>*</code> CurBudget[Total Gross Sales]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Gain(Ads)</td>
 <td style="text-align: left">CurBudget[Budget(Ads)] <code>-</code> CurBudget[Actual(Ads)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Balance(Ads)</td>
 <td style="text-align: left">CurBudget[Gain(Ads)] <code>+</code> PreBudget[Balance(Ads)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Portion(Review)</td>
 <td style="text-align: left">PreBudget[Portion(Review)]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Budget(Review)</td>
 <td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Review)] <code>?</code> CurBudget[Portion(Review)] <code>:</code> CurBudget_line1[16]) <code>*</code> CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Actual(Review)</td>
-<td style="text-align: left"></td>
 <td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left">Yes</td>
@@ -1637,34 +1578,29 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <td style="text-align: left">Gain(Review)</td>
 <td style="text-align: left">CurBudget[Budget(Review)] <code>-</code> CurBudget[Actual(Review)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Balance(Review)</td>
 <td style="text-align: left">CurBudget[Gain(Review)] <code>+</code> PreBudget[Balance(Review)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Portion(Social)</td>
 <td style="text-align: left">PreBudget[Portion(Social)]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Budget(Social)</td>
 <td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Social)] <code>?</code> CurBudget[Portion(Social)] <code>:</code> CurBudget_line1[21]) <code>*</code> CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Actual(Social)</td>
-<td style="text-align: left"></td>
 <td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left">Yes</td>
@@ -1672,34 +1608,29 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <td style="text-align: left">Gain(Social)</td>
 <td style="text-align: left">CurBudget[Budget(Social)] <code>-</code> CurBudget[Actual(Social)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Balance(Social)</td>
 <td style="text-align: left">CurBudget[Gain(Social)] <code>+</code> PreBudget[Balance(Social)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Portion(Promo)</td>
 <td style="text-align: left">PreBudget[Portion(Promo)]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Budget(Promo)</td>
 <td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Promo)] <code>?</code> CurBudget[Portion(Promo)] <code>:</code> CurBudget_line1[26]) <code>*</code> CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Actual(Promo)</td>
-<td style="text-align: left"></td>
 <td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left">Yes</td>
@@ -1707,34 +1638,29 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <td style="text-align: left">Gain(Promo )</td>
 <td style="text-align: left">CurBudget[Budget(Promo)] <code>-</code> CurBudget[Actual(Promo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Balance(Promo)</td>
 <td style="text-align: left">CurBudget[Gain(Promo)] <code>+</code> PreBudget[Balance(Promo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Portion(Photo)</td>
 <td style="text-align: left">PreBudget[Portion(Photo)]</td>
-<td style="text-align: left">&#39;&#39;</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left">Yes</td>
 </tr>
 <tr>
 <td style="text-align: left">Budget(Photo)</td>
 <td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Photo)] <code>?</code> CurBudget[Portion(Photo)] <code>:</code> CurBudget_line1[31]) <code>*</code> CurBudget[Total Gross Sales])</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Actual(Photo)</td>
-<td style="text-align: left"></td>
 <td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left">Yes</td>
@@ -1742,56 +1668,48 @@ Subtotal(CurBudget[Total Balance]),
 <tr>
 <td style="text-align: left">Gain(Photo)</td>
 <td style="text-align: left">CurBudget[Budget(Photo)] <code>-</code> CurBudget[Actual(Photo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Balance(Photo)</td>
 <td style="text-align: left">CurBudget[Gain(Photo)] <code>+</code> PreBudget[Balance(Photo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">ACCOUNTING</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Ads</td>
 <td style="text-align: left">CurBudget[Portion(Ads)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Review</td>
 <td style="text-align: left">CurBudget[Portion(Review)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Social</td>
 <td style="text-align: left">CurBudget[Portion(Social)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Promo</td>
 <td style="text-align: left">CurBudget[Portion(Promo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Photo</td>
 <td style="text-align: left">CurBudget[Portion(Photo)]</td>
-<td style="text-align: left"></td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">Sum</td>
-<td style="text-align: left">CurBudget[Portion(Ads)] <code>+</code> CurBudget[Portion(Review)] <code>+</code> CurBudget[Portion(Social)] <code>+</code> CurBudget[Portion(Promo)] <code>+</code> CurBudget[Portion(Photo)</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">CurBudget[Portion(Ads)] <code>+</code> CurBudget[Portion(Review)] <code>+</code> CurBudget[Portion(Social)] <code>+</code> CurBudget[Portion(Promo)] <code>+</code> CurBudget[Portion(Photo)]</td>
 <td style="text-align: left">PERCENT</td>
 <td style="text-align: left"></td>
 </tr>
@@ -1800,19 +1718,18 @@ Subtotal(CurBudget[Total Balance]),
 </ol></li>
 <li><p>表格下方显示 Total</p>
 
-<div><pre class="line-numbers"><code class="language-python">    CurBudget_total = [
-    &#39;&#39;, &#39;&#39;, &#39;Total&#39;, &#39;&#39;, Sum(CurBudget[Total Gross Sales]), Sum(CurBudget[Profit]), &#39;&#39;, 
-    Sum(CurBudget[Target Profit])/Sum(CurBudget[Total Gross Sales]), 
-    Sum(CurBudget[Target Profit]), 
-    Sum(CurBudget[Profit])/Sum(CurBudget[Total Gross Sales]),
-    Sum(CurBudget[Total Balance]),
-    &#39;&#39;, Sum(CurBudget[Budget(Ads)]), Sum(CurBudget[Actual(Ads)]), Sum(CurBudget[Gain(Ads)]), Sum(CurBudget[Balance(Ads)]),
-    &#39;&#39;, Sum(CurBudget[Budget(Review)]), Sum(CurBudget[Actual(Review)]), Sum(CurBudget[Gain(Review)]), Sum(CurBudget[Balance(Review)]),
-    &#39;&#39;, Sum(CurBudget[Budget(Social)]), Sum(CurBudget[Actual(Social)]), Sum(CurBudget[Gain(Social)]), Sum(CurBudget[Balance(Social)]),
-    &#39;&#39;, Sum(CurBudget[Budget(Promo)]), Sum(CurBudget[Actual(Promo)]), Sum(CurBudget[Gain(Promo)]), Sum(CurBudget[Balance(Promo)]),
-    &#39;&#39;, Sum(CurBudget[Budget(Photo)]), Sum(CurBudget[Actual(Photo)]), Sum(CurBudget[Gain(Photo)]), Sum(CurBudget[Balance(Photo)]),
-    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]
-    ~~~~</code></pre></div></li>
+<div><pre class="line-numbers"><code class="language-python">CurBudget_total = [
+&#39;&#39;, &#39;&#39;, &#39;Total&#39;, &#39;&#39;, Sum(CurBudget[Total Gross Sales]), Sum(CurBudget[Profit]), &#39;&#39;, 
+Sum(CurBudget[Target Profit])/Sum(CurBudget[Total Gross Sales]), 
+Sum(CurBudget[Target Profit]), 
+Sum(CurBudget[Profit])/Sum(CurBudget[Total Gross Sales]),
+Sum(CurBudget[Total Balance]),
+&#39;&#39;, Sum(CurBudget[Budget(Ads)]), Sum(CurBudget[Actual(Ads)]), Sum(CurBudget[Gain(Ads)]), Sum(CurBudget[Balance(Ads)]),
+&#39;&#39;, Sum(CurBudget[Budget(Review)]), Sum(CurBudget[Actual(Review)]), Sum(CurBudget[Gain(Review)]), Sum(CurBudget[Balance(Review)]),
+&#39;&#39;, Sum(CurBudget[Budget(Social)]), Sum(CurBudget[Actual(Social)]), Sum(CurBudget[Gain(Social)]), Sum(CurBudget[Balance(Social)]),
+&#39;&#39;, Sum(CurBudget[Budget(Promo)]), Sum(CurBudget[Actual(Promo)]), Sum(CurBudget[Gain(Promo)]), Sum(CurBudget[Balance(Promo)]),
+&#39;&#39;, Sum(CurBudget[Budget(Photo)]), Sum(CurBudget[Actual(Photo)]), Sum(CurBudget[Gain(Photo)]), Sum(CurBudget[Balance(Photo)]),
+&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]</code></pre></div></li>
 </ol></li>
 <li><p>Parent ASIN Budget<br>
 通过 Current Budget Report (CurBudget) 生成 Parent ASIN Budget (PAsinBudget)  </p>
@@ -2018,6 +1935,8 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 <p>Generate SP file 模块空格内容自动填充<br>
 <em>以下 Sum() 指的是取所有选中产品对应值之和</em></p>
 
+<p>在最近30天的 Data 中查询并计算：</p>
+
 <ul>
 <li><strong>Average conversion</strong> = Sum(units)/Sum(sessions)</li>
 <li><strong>Total Units</strong> = Sum(units)</li>
@@ -2025,12 +1944,8 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 <li><strong>Ads Percentage</strong> = Sum(Ads)/Sum(gross sales)</li>
 <li><p><strong>Margin</strong> </p>
 
-<ul>
-<li><p>在最近一个月的 Data 中查询并计算：</p>
-
 <div><pre class="line-numbers"><code class="language-javascript">= Sum(total sales - net refund - refer fees - product cost - shipping cost) 
   / Sum(total sales)   </code></pre></div></li>
-</ul></li>
 <li><p><strong>Rank</strong> 默认18</p></li>
 <li><p><strong>Default Bid</strong> 默认以下两者中的较大值</p>
 
@@ -2040,7 +1955,7 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 <div><pre class="line-numbers"><code class="language-javascript">= (Total Gross Sales / Total Units)   
   ×（Margin + Ads Percentage) 
   × Average Conversion</code></pre></div></li>
-<li><p>Reference 2 (from PPC Report): </p>
+<li><p>Reference 2 (from ProductAdsReport): </p>
 
 <div><pre class="line-numbers"><code class="language-javascript">Sum(Ads)/Sum(clicks)</code></pre></div></li>
 </ul></li>
