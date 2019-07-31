@@ -565,14 +565,48 @@ div.prism-show-language > div.prism-show-language-label {
 <li>首行提供排序、筛选、搜索功能</li>
 <li>第二、三四行计算 Subtotal、Total 和 WOW</li>
 </ul></li>
+<li>切换 Child Asin/Parent Asin 报表
+
+<ul>
+<li>将 Child Asin 结果 GroupBy Parent Asin</li>
+</ul></li>
 </ol>
 
 <h5 id="toc_3">生成流程及内容、格式</h5>
 
 <ol>
 <li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost<br>
-可以点击 Unit Cost 单元格单个修改，也可上传 csv/xlsx 文件进行批量修改。批量修改时新增 SKU 不存在的记录，更新 SKU 已存在的 Unit Cost。
-<img src="pic/ProductFee.png" alt="Sales Report"></p></li>
+数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_   <img src="pic/ProductFee.png" alt="Sales Report"> </p>
+
+<ul>
+<li>单条新增、修改<br>
+
+<ul>
+<li>单条新增：在弹出框中输入新 SKU 及其他值并保存，保存时检查最新的 FBA Fee Preview Report，如果 Product 信息已存在则覆盖用户输入 </li>
+<li>单条修改：在弹出框中输入旧 SKU 及其他值并保存，保存时 Product 信息也以最新的 FBA Fee Preview Report 为准，若要覆盖之前值，需勾选 Update All</li>
+<li>未填写的被视为使用默认值</li>
+</ul></li>
+</ul>
+
+<p><img src="pic/ProductFee-add.png" alt="Sales Report"></p>
+
+<ul>
+<li>批量新增、修改
+
+<ul>
+<li>批量新增：下载模板，填写新 SKU 及其他值后上传，保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
+<li>批量修改：下载模板，填写旧 SKU 及其他值后上传，保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
+<li>批量新增和修改可以在同一个文件内进行</li>
+<li>未填写的被视为使用默认值</li>
+</ul></li>
+</ul>
+
+<p><img src="pic/ProductFee-upload.png" alt="Sales Report"></p>
+
+<ul>
+<li>不允许删除<br>
+具体计算见示例 gsheet</li>
+</ul></li>
 <li><p>根据用户所选的 Merchant 和时间段从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
 数据的来源有  </p>
 
@@ -750,7 +784,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Cost</td>
 <td style="text-align: left"><mark>Product Cost</mark></td>
-<td style="text-align: left">各个 SKU 的 COGS[Unit Cost] <code>×</code> Total Units</td>
+<td style="text-align: left">各个 SKU 最新的 Product Fees[LDP Cost] <code>×</code> Total Units</td>
 </tr>
 <tr>
 <td style="text-align: left">Cost</td>
@@ -1932,7 +1966,8 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 
 <h5 id="toc_9">Optimization Details</h5>
 
-<p>Generate SP file 模块空格内容自动填充<br>
+<p><img src="pic/Optimization-caldefault.png" alt="ShareProject">
+Generate SP file 模块空格内容根据所选择的 SKU 自动填充<br>
 <em>以下 Sum() 指的是取所有选中产品对应值之和</em></p>
 
 <p>在最近30天的 Data 中查询并计算：</p>
