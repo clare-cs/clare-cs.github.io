@@ -576,15 +576,18 @@ div.prism-show-language > div.prism-show-language-label {
 
 <ol>
 <li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost<br>
-数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_   <img src="pic/ProductFee.png" alt="Sales Report"> </p>
+数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_，当有用户打开这个页面及切换 Merchant 时检查当天有没有缓存，没有就请求，缓存全局唯一。   <img src="pic/ProductFee.png" alt="Sales Report"> </p>
 
 <ul>
 <li>单条新增、修改<br>
 
 <ul>
-<li>单条新增：在弹出框中输入新 SKU 及其他值并保存，保存时检查最新的 FBA Fee Preview Report，如果 Product 信息已存在则覆盖用户输入 </li>
-<li>单条修改：在弹出框中输入旧 SKU 及其他值并保存，保存时 Product 信息也以最新的 FBA Fee Preview Report 为准，若要覆盖之前值，需勾选 Update All</li>
-<li>未填写的被视为使用默认值</li>
+<li>单条新增/修改：在弹出框中输入新/旧 SKU 及其他值并保存 </li>
+<li>保存时检查最新的 FBA Fee Preview Report，如果 Product 信息已存在则覆盖用户输入</li>
+<li>整个 Product Fees 中 SKU+Date(PDT) 为唯一值</li>
+<li>若不勾选 Update All，日期选框默认为当前日期，可修改。保存则为该 SKU 新增一条记录，会覆盖之前相同日期的记录；若勾选了 Update All，日期选框默认为初始日期，不可修改。保存则删除此 SKU 在 Product Fees 中的其他记录</li>
+<li>其他未填写的输入框被视为使用默认值</li>
+<li>尺寸重量单位换算：界面上提供单位换算供查看，保存时仍使用商店统一单位</li>
 </ul></li>
 </ul>
 
@@ -594,10 +597,13 @@ div.prism-show-language > div.prism-show-language-label {
 <li>批量新增、修改
 
 <ul>
-<li>批量新增：下载模板，填写新 SKU 及其他值后上传，保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
-<li>批量修改：下载模板，填写旧 SKU 及其他值后上传，保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
+<li>批量新增/修改：下载模板，填写新/旧 SKU 及其他值后上传</li>
+<li>保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
 <li>批量新增和修改可以在同一个文件内进行</li>
-<li>未填写的被视为使用默认值</li>
+<li>若不填写 Update，日期单元格的默认为值当前日期，可修改。上传成功则为该 SKU 新增一条记录，会覆盖之前相同日期的记录；若填写了 Update，忽略日期单元格内容，使用初始日期。上传成功则删除此 SKU 在 Product Fees 中的其他记录</li>
+<li>整个上传表格中 SKU+Date(PDT) 为唯一值，若出现重复则上传失败</li>
+<li>其他未填写的单元格被视为使用默认值</li>
+<li>尺寸重量单位换算：使用商店统一单位</li>
 </ul></li>
 </ul>
 
@@ -1960,6 +1966,7 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 <li>所有者始终可以对 Product 拥有操作权</li>
 <li>所有者可以取消/授予其他用户对 Product 的操作权</li>
 <li>被分享者不能取消自己对 Product 的操作权，但可取消/授予其他用户对 Product 的操作权</li>
+<li>common word 改为由 Admin 统一指定</li>
 </ul>
 
 <h4 id="toc_8">Optimizations</h4>
