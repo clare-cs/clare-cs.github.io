@@ -575,19 +575,85 @@ div.prism-show-language > div.prism-show-language-label {
 <h5 id="toc_3">生成流程及内容、格式</h5>
 
 <ol>
-<li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost<br>
-数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_，当有用户打开这个页面及切换 Merchant 时检查当天有没有缓存，没有就请求，缓存全局唯一。   <img src="pic/ProductFee.png" alt="Sales Report"> </p>
+<li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost，表格按 Modified Date 排序<br>
+数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_，当用户保存数据时检查当天有没有缓存，缓存过期则在 ReportRequestList 取最近一天的，若也没有就重新生成并等待下载，缓存全局唯一。  <img src="pic/ProductFee.png" alt="Sales Report"> </p>
 
 <ul>
-<li>单条新增、修改<br>
+<li>Data Definition
 
 <ul>
-<li>单条新增/修改：在弹出框中输入新/旧 SKU 及其他值并保存 </li>
-<li>保存时检查最新的 FBA Fee Preview Report，如果 Product 信息已存在则覆盖用户输入</li>
-<li>整个 Product Fees 中 SKU+Date(PDT) 为唯一值</li>
-<li>若不勾选 Update All，日期选框默认为当前日期，可修改。保存则为该 SKU 新增一条记录，会覆盖之前相同日期的记录；若勾选了 Update All，日期选框默认为初始日期，不可修改。保存则删除此 SKU 在 Product Fees 中的其他记录</li>
-<li>其他未填写的输入框被视为使用默认值</li>
-<li>尺寸重量单位换算：界面上提供单位换算供查看，保存时仍使用商店统一单位</li>
+<li>SKU: 必须填写</li>
+<li>Product: 
+
+<ul>
+<li>保存时根据 SKU 检查最新的 FBA Fee Preview Report，如果可以查到 Product 信息则直接使用；若 Product 信息不存在则使用用户输入；若 Product 信息不存在且无用户输入，则 Product 数据显示为0</li>
+<li>若使用用户输入的 longest-side, median-side, shortest-side，保存时从大到小排序</li>
+<li>Product 数据合法范围为 [0, +∞)</li>
+</ul></li>
+<li>Carton: 
+
+<ul>
+<li>保存用户输入的 Longest Side (cm), Medium Side (cm), Shortest Side (cm) 时从大到小排序</li>
+<li>若 Longest Side (cm), Medium Side (cm), Shortest Side (cm) 中有一项未输入或输入为0，则三项均使用默认数据，即使用 Product 对应的 longest-side, median-side, shortest-side </li>
+<li>Case Pack 默认为1，留空时也取1</li>
+<li>Carton Weight (kg) 留空或输入0时，使用 Product Weight</li>
+<li>Carton 数据合法范围为 [0, +∞)</li>
+<li>Case Pack 数据合法范围为 N+</li>
+</ul></li>
+<li>Freight:
+
+<ul>
+<li>Type，在单个新增/修改及上传文件中均提供当前可用的 Type 供用户选择， 默认设为 40&#39; Cnt，留空时也取 40&#39; Cnt</li>
+<li>Load Rate 默认为100%，留空时也取 100%，数据合法范围为 (0, +∞)</li>
+</ul></li>
+<li>Duty: 留空时取 0%，数据合法范围为 [0, +∞)</li>
+<li>Price:
+
+<ul>
+<li>FOB Price 和 LDP Price 两项需要至少填写一项，有用户输入时使用用户输入值，无用户输入时根据另一项及其他项进行计算</li>
+<li>ldp<em>cost = fob</em>price + freight<em>cost + duty</em>cost</li>
+<li>合法范围均为 (0, +∞)</li>
+</ul></li>
+<li>Update All 和 Effective Date: 
+
+<ul>
+<li>单条记录新增/修改：
+
+<ul>
+<li>Effective Date 默认为当前 PDT 日期，可修改</li>
+<li>勾选了 Update All，从 Effective Date 开始更新相关 Sales Report</li>
+</ul></li>
+<li>批量上传
+
+<ul>
+<li>不填写 effective-date 单元格默认使用当前 PDT 日期</li>
+<li>update-all 留空或选择 no 等同于不勾选，选择 yes 等同于勾选</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>单位：每个商店有唯一的尺寸、重量、货币单位</p></li>
+<li><p>单条新增、修改  </p>
+
+<ul>
+<li>单条新增
+
+<ul>
+<li>在弹出框中输入新 SKU 及其他值并保存 </li>
+</ul></li>
+<li><p>单条修改</p>
+
+<ol>
+<li>点击修改按钮：打开弹出框进行编辑，除 SKU 外其他值允许修改。保存时检查 SKU + Effective Date 是否与其他条目冲突，若冲突则不允许保存。</li>
+<li>通过新增修改：在新增时填写已存在的 SKU + Effective Date 及其他值，保存时使用当前数据覆盖之前记录。</li>
+</ol></li>
+<li><p>尺寸重量单位换算：单条记录新增/修改的界面上提供单位换算供查看，保存时仍使用商店统一单位</p></li>
+<li><p>数据一致性</p>
+
+<ul>
+<li>整个 Product Fees 中 SKU + Effective Date 为唯一值</li>
+<li>若同时有多位用户编辑同一行，以最后保存的为准</li>
+<li>不刷新看不到打开页面后其他用户做的修改</li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -597,12 +663,26 @@ div.prism-show-language > div.prism-show-language-label {
 <li>批量新增、修改
 
 <ul>
-<li>批量新增/修改：下载模板，填写新/旧 SKU 及其他值后上传</li>
-<li>保存时 Product 信息以最新的 FBA Fee Preview Report 为准</li>
+<li>批量新增/修改：下载模板，填写新/旧 SKU 及其他值后上传，模板文件提供 Data Definition 向用户介绍如何填写，其中 Freight Type 和尺寸、重量、货币单位根据下载时的实际情况动态更新</li>
 <li>批量新增和修改可以在同一个文件内进行</li>
-<li>若不填写 Update，日期单元格的默认为值当前日期，可修改。上传成功则为该 SKU 新增一条记录，会覆盖之前相同日期的记录；若填写了 Update，忽略日期单元格内容，使用初始日期。上传成功则删除此 SKU 在 Product Fees 中的其他记录</li>
-<li>整个上传表格中 SKU+Date(PDT) 为唯一值，若出现重复则上传失败</li>
-<li>其他未填写的单元格被视为使用默认值</li>
+<li>上传成功意味着：
+
+<ul>
+<li>上传的 sku 不存在时，为该 sku 新增一条记录</li>
+<li>上传的 sku 已存在
+
+<ul>
+<li>effective-date 不同，则为该 sku + effective-date 新增一条记录</li>
+<li>effective-date 相同，则覆盖相同 sku + effective-date 的记录</li>
+</ul></li>
+</ul></li>
+<li>上传失败：上传失败时返回上传文件，并将错误用不同颜色标识出来
+
+<ul>
+<li>上传表格中 sku + effective-date 应为唯一值，若出现重复则上传失败，错误标记为黄色</li>
+<li>单元格出现数据格式错误，标记为红色</li>
+<li>SKU 或 ldp-price 未填写，标记为红色</li>
+</ul></li>
 <li>尺寸重量单位换算：使用商店统一单位</li>
 </ul></li>
 </ul>
@@ -610,7 +690,7 @@ div.prism-show-language > div.prism-show-language-label {
 <p><img src="pic/ProductFee-upload.png" alt="Sales Report"></p>
 
 <ul>
-<li>不允许删除<br>
+<li>点击删除按钮删除一行数据<br>
 具体计算见示例 gsheet</li>
 </ul></li>
 <li><p>根据用户所选的 Merchant 和时间段从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
@@ -1971,7 +2051,50 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 
 <h4 id="toc_8">Optimizations</h4>
 
-<h5 id="toc_9">Optimization Details</h5>
+<h5 id="toc_9">Optimization Info</h5>
+
+<p><img src="pic/OptimizationInfo-1.png" alt="ShareProject">
+<img src="pic/OptimizationInfo-2.png" alt="ShareProject"></p>
+
+<p>更新 Optimization Info 页面布局，并新增 Add Listing 功能，可以为含有多个 Child Listing 的产品保存多份 Copy。在表格上可以进行的操作包括：新增（Create）、删除（Delete）、重命名（点击表格单元进入修改模式）、进入详情页面（Edit）</p>
+
+<p><img src="pic/Optimization-Weight-SelectVariations.png" alt="ShareProject">
+在 Weight Phrases &amp; Words panel 新增 Select Variation 功能。根据3个上传文件对应的3个 parent ASIN，显示所有的 Variation 供用户选择：</p>
+
+<ul>
+<li>Variation 一般由一对 Size 和 Color 确定，但也有可能出现其他类型属性</li>
+<li>默认全选，点击 = 选择，再次点击 = 取消选择</li>
+<li><p>选择一对 Size 和 Color 意味着选定它们对应的 Variation/child ASIN，比如在 parent ASIN: B07WJT2PD9 下选择： </p>
+
+<div><pre class="line-numbers"><code class="language-javascript">&quot;attributes&quot;:[{
+  &quot;dimension&quot;:&quot;Size&quot;,
+  &quot;value&quot;:&quot;50x60\&quot;&quot;
+},{
+  &quot;dimension&quot;:&quot;Color&quot;,
+  &quot;value&quot;:&quot;Navy&quot;
+}]</code></pre></div>
+
+<p>即选中 child ASIN: B07RYPR4J4</p></li>
+<li><p>若选择 Size 或 Color 其中之一，意味着选中满足该条件的所有 Variation/child ASIN，比如在 parent ASIN: B07WJT2PD9 下选择：</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">&quot;attributes&quot;:[{
+  &quot;dimension&quot;:&quot;Color&quot;,
+  &quot;value&quot;:&quot;Navy&quot;
+}]</code></pre></div>
+
+<p>即选中 child ASIN: B07RYPR4J4 和 B07RYPHRGF</p>
+
+<ul>
+<li>点击 parent ASIN 则选中所有 child ASIN，此时该 parent ASIN 下所有属性处于选中状态</li>
+<li>点击 Select All 时，所有 parent ASIN 下的所有属性处于选中状态</li>
+<li>点击 Clear 时，取消当前所有选择</li>
+</ul></li>
+</ul>
+
+<p>选择完毕后点击 OK 按钮，对 Weight Phrases &amp; Words 结果进行过滤，只保留选中的 child ASIN 相关的 Phrases 和 Words 及对应 Weight 结果。同时 Listing Writer 中可用的 Phrases 和 Words 也将刷新。注意这2个 panel 中的 Phrases 和 Words 总数会发生变化，所以颜色的分布也会与全选时不同。<br>
+文件兼容：如果三个文件里有一个 reverse asin 文件（不包含 asin 信息），隐藏 Select Variation 功能。</p>
+
+<h5 id="toc_10">Optimization Details</h5>
 
 <p><img src="pic/Optimization-caldefault.png" alt="ShareProject">
 Generate SP file 模块空格内容根据所选择的 SKU 自动填充<br>
