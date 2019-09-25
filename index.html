@@ -615,25 +615,25 @@ div.prism-show-language > div.prism-show-language-label {
 <li>ldp<em>cost = fob</em>price + freight<em>cost + duty</em>cost</li>
 <li>合法范围均为 (0, +∞)</li>
 </ul></li>
-<li>Update All 和 Effective Date: 
+<li>Effective Date: 
 
 <ul>
 <li>单条记录新增/修改：
 
 <ul>
-<li>Effective Date 默认为当前 PDT 日期，可修改</li>
-<li>勾选了 Update All，从 Effective Date 开始更新相关 Sales Report</li>
+<li>Effective Date: LDP 的起效时间，默认为当前 PDT 日期，可修改</li>
 </ul></li>
 <li>批量上传
 
 <ul>
 <li>不填写 effective-date 单元格默认使用当前 PDT 日期</li>
-<li>update-all 留空或选择 no 等同于不勾选，选择 yes 等同于勾选</li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><p>单位：每个商店有唯一的尺寸、重量、货币单位</p></li>
-<li><p>单条新增、修改  </p>
+<li>单位：每个商店有唯一的尺寸、重量、货币单位</li>
+<li>ParentASIN 和 ASIN: 每次进入 ProductFees 时若发现有空缺项，则自动通过 Keepa 获取，直到 token 用光</li>
+<li><p>单条新增、修改<br>
+<img src="pic/ProductFee-add.png" alt="Sales Report"></p>
 
 <ul>
 <li>单条新增
@@ -656,12 +656,8 @@ div.prism-show-language > div.prism-show-language-label {
 <li>不刷新看不到打开页面后其他用户做的修改</li>
 </ul></li>
 </ul></li>
-</ul>
-
-<p><img src="pic/ProductFee-add.png" alt="Sales Report"></p>
-
-<ul>
-<li>批量新增、修改
+<li><p>批量新增、修改
+<img src="pic/ProductFee-upload.png" alt="Sales Report"></p>
 
 <ul>
 <li>批量新增/修改：下载模板，填写新/旧 SKU 及其他值后上传，模板文件提供 Data Definition 向用户介绍如何填写，其中 Freight Type 和尺寸、重量、货币单位根据下载时的实际情况动态更新</li>
@@ -686,21 +682,17 @@ div.prism-show-language > div.prism-show-language-label {
 </ul></li>
 <li>尺寸重量单位换算：使用商店统一单位</li>
 </ul></li>
-</ul>
-
-<p><img src="pic/ProductFee-upload.png" alt="Sales Report"></p>
-
-<ul>
-<li>点击删除按钮删除一行数据<br>
-具体计算见示例 gsheet</li>
+<li><p>点击删除按钮删除一行数据<br>
+具体计算见示例 gsheet</p></li>
 </ul></li>
-<li><p>根据用户所选的 Merchant 和时间段从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
+<li><p>从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
 数据的来源有  </p>
 
 <ul>
-<li>AllOrdersReport: _GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_</li>
-<li>SettlementReport: _GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2_</li>
-<li>ProductAdsReport: /v2/sp/productAds/report</li>
+<li>AllOrdersReport: _GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_ （根据用户所选的 Merchant 和时间段取）</li>
+<li>SettlementReport: _GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2_（根据用户所选的 Merchant 和时间段取合适的拼合）</li>
+<li>ProductAdsReport: /v2/sp/productAds/report（根据用户所选的 Merchant 和时间段取）</li>
+<li>MerchantListing: _GET_MERCHANT_LISTINGS_DATA_</li>
 </ul>
 
 <table>
@@ -716,7 +708,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">General</td>
 <td style="text-align: left"><mark>Name</mark></td>
-<td style="text-align: left">根据 SKU 从 Inventory History 中获取 Title</td>
+<td style="text-align: left">根据 SKU 从 MerchantListing 中获取 item-name</td>
 </tr>
 <tr>
 <td style="text-align: left">General</td>
@@ -726,17 +718,17 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Product</td>
 <td style="text-align: left"><mark>ASIN</mark></td>
-<td style="text-align: left">根据 SKU 从 Inventory History 中获取 (Child) ASIN</td>
+<td style="text-align: left">根据 SKU 从 MerchantListing 中获取 (Child) ASIN</td>
 </tr>
 <tr>
 <td style="text-align: left">Product</td>
 <td style="text-align: left"><mark>Parent ASIN</mark></td>
-<td style="text-align: left">根据 SKU 从 Inventory History 中获取 (Parent) ASIN，如果不存在就用 ASIN</td>
+<td style="text-align: left">从 ProductFees 获取</td>
 </tr>
 <tr>
 <td style="text-align: left">Product</td>
 <td style="text-align: left"><mark>SKU</mark></td>
-<td style="text-align: left">取 ProductAdsReport  →  sku 与 AllOrdersReport → sku 的并集</td>
+<td style="text-align: left">取 ProductFees  →  sku 与 AllOrdersReport → sku 的并集</td>
 </tr>
 <tr>
 <td style="text-align: left">Gross</td>
@@ -761,7 +753,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Gross</td>
 <td style="text-align: left">Amz Withheld Taxes</td>
-<td style="text-align: left">SettlementReport → amount-type <code>==</code> &quot;ItemWithheldTax&quot; 的各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → amount-type <code>==</code> &quot;ItemWithheldTax&quot; 的各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Gross</td>
@@ -771,7 +763,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Gross</td>
 <td style="text-align: left"><mark>Reimbursements</mark></td>
-<td style="text-align: left">SettlementReport → amount-type <code>==</code> &quot;FBA Inventory Reimbursement&quot; <code>&amp;&amp;</code> (amount-description <code>==</code> &quot;FREE_REPLACEMENT_REFUND_ITEMS&quot; <code>||</code> amount-description <code>==</code> &quot;REVERSAL_REIMBURSEMENT&quot;) 的各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → amount-type <code>==</code> &quot;FBA Inventory Reimbursement&quot; <code>&amp;&amp;</code> (amount-description <code>==</code> &quot;FREE_REPLACEMENT_REFUND_ITEMS&quot; <code>||</code> amount-description <code>==</code> &quot;REVERSAL_REIMBURSEMENT&quot;) 的各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Gross</td>
@@ -806,22 +798,22 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Refunds</td>
 <td style="text-align: left">Refunds</td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemPrice&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Principal&quot; 的各个 SKU 的条目数之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemPrice&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Principal&quot; 的各个 SKU 的条目数之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Refunds</td>
 <td style="text-align: left">Refund Sales</td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> (amount-type <code>==</code> &quot;ItemPrice&quot; <code>||</code> amount-type <code>==</code> &quot;Promotion&quot;) 的各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> (amount-type <code>==</code> &quot;ItemPrice&quot; <code>||</code> amount-type <code>==</code> &quot;Promotion&quot;) 的各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Refunds</td>
 <td style="text-align: left">Refund Fees</td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemFees&quot; 的各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemFees&quot; 的各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Refunds</td>
 <td style="text-align: left"><mark>Net Refund</mark></td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>!=</code> &quot;ItemWithheldTax&quot; <code>&amp;&amp;</code> (amount-type <code>!=</code> &quot;Tax&quot; <code>||</code> amount-type <code>!=</code> &quot;ShippingTax&quot; <code>||</code> amount-type <code>!=</code> &quot;Shipping&quot; <code>||</code> amount-type <code>!=</code> &quot;ShippingChargeback&quot;) 的 各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>!=</code> &quot;ItemWithheldTax&quot; <code>&amp;&amp;</code> (amount-type <code>!=</code> &quot;Tax&quot; <code>||</code> amount-type <code>!=</code> &quot;ShippingTax&quot; <code>||</code> amount-type <code>!=</code> &quot;Shipping&quot; <code>||</code> amount-type <code>!=</code> &quot;ShippingChargeback&quot;) 的 各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Organic/PPC Orders</td>
@@ -841,17 +833,17 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">FBA Fees</td>
 <td style="text-align: left"><mark>Pick &amp; Pack</mark></td>
-<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAPerUnitFulfillmentFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → amount-description <code>==</code> &quot;FBAPerUnitFulfillmentFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">FBA Fees</td>
 <td style="text-align: left"><mark>Handling Fee</mark></td>
-<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAPerOrderFulfillmentFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → amount-description <code>==</code> &quot;FBAPerOrderFulfillmentFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">FBA Fees</td>
 <td style="text-align: left"><mark>Weight Handling</mark></td>
-<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAWeightBasedFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → amount-description <code>==</code> &quot;FBAWeightBasedFee&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">FBA Fees</td>
@@ -866,12 +858,12 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Commission</td>
 <td style="text-align: left"><mark>Refer Fees</mark></td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Order&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Commission&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;Order&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Commission&quot; 拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Cost</td>
 <td style="text-align: left"><mark>Product Cost</mark></td>
-<td style="text-align: left">各个 SKU 最新的 Product Fees[LDP Cost] <code>×</code> Total Units</td>
+<td style="text-align: left">各个 SKU 最新的 Product Fees[LDP Cost] <code>×</code> Total Units（每次查看时从 ProductFees 获取最新的 LDPCost+EffectiveDate，再根据 AllOrdersReport 中的 purchase-date+sku+quantity 关系，确认不同时间产生的 Unit 应取的 LDPCost）</td>
 </tr>
 <tr>
 <td style="text-align: left">Cost</td>
@@ -886,12 +878,12 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Net Profit</td>
 <td style="text-align: left"><mark>Total Gross Sales</mark></td>
-<td style="text-align: left">各个 SKU 的 Gross [Total Sales]</td>
+<td style="text-align: left">各个 SKU 的 Gross [Total Sales]（因为我们不考虑收取后还要交出去的 Shipping、Taxes 和 Gift Wrap，以及 被托管的 Amz Withheld Taxes）</td>
 </tr>
 <tr>
 <td style="text-align: left">Net Profit</td>
 <td style="text-align: left"><mark>Amz FBM Postage</mark></td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;other-transaction&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Shipping label purchase&quot;，拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;other-transaction&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Shipping label purchase&quot;，拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Net Profit</td>
@@ -906,7 +898,7 @@ div.prism-show-language > div.prism-show-language-label {
 <tr>
 <td style="text-align: left">Net Profit</td>
 <td style="text-align: left"><mark>Other Transactions</mark></td>
-<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;ItemFees&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;SalesTaxServiceFee&quot;，拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
+<td style="text-align: left">用 AllOrdersReport 包含的 order-id 取 SettlementReport → transaction-type <code>==</code> &quot;ItemFees&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;SalesTaxServiceFee&quot;，拿 AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的每一个 order-id 去获取各个 SKU 的 amount 之和</td>
 </tr>
 <tr>
 <td style="text-align: left">Net Profit</td>
@@ -2061,7 +2053,7 @@ PAsinBudget_line1[21] = &#39;Photo/Video&#39;
 <p>更新 Optimization Info 页面布局，并新增 Add Listing 功能，可以为含有多个 Child Listing 的产品保存多份 Copy。在表格上可以进行的操作包括：新增（Create）、删除（Delete）、重命名（点击表格单元进入修改模式）、进入详情页面（Edit）。重新上传 Listings &amp; Campaigns 文件时弹出提示框，用户确认后删除之前所有 Listing 并更新文件。</p>
 
 <p><img src="pic/Optimization-Weight-SelectVariations.png" alt="ShareProject">
-在 Weight Phrases &amp; Words panel 新增 Select Variation 功能。根据3个上传文件对应的3个 parent ASIN (每个文件有且仅有一个 parent ASIN)，显示所有的 Variation(child ASIN) 对应的 Demnsion 供用户选择，以选取更有针对性的数据来撰写 Listing Copy</p>
+在 Weight Phrases &amp; Words panel 新增 Select Variations 功能。根据3个上传文件对应的3个 parent ASIN (每个文件有且仅有一个 parent ASIN)，显示所有的 Variation(child ASIN) 对应的 Demnsion 供用户选择，以选取更有针对性的数据来撰写 Listing Copy</p>
 
 <ul>
 <li>一个 Variation 一般由一对 Size-Color 确定，但也可能由其他或更多类型的 Demnsion 确定。</li>
