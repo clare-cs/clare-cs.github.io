@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SmartAdmin PRD_v3.1</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h3 id="toc_0">Reports</h3>
+
+<h4 id="toc_1">Sales Report</h4>
+
+<p><img src="pic/SalesReport.png" alt="Sales Report">
+<img src="pic/NewSalesReport.png" alt="Sales Report"></p>
+
+<h5 id="toc_2">页面交互</h5>
+
+<ol>
+<li>选择 Merchant</li>
+<li>选择报表，周报表和月报表按时间从新到旧排列
+
+<ul>
+<li>删除报表：Admin 可以在报表选择框删除报表，每次只允许删除最新（按数据库生成时间）的一个</li>
+</ul></li>
+<li>自定义列及 Transaction Update Check 按钮
+
+<ul>
+<li>选择展示的列，默认全选</li>
+<li>点击在弹窗中显示 SettlementReport 更新日期</li>
+</ul></li>
+<li>新建报表
+
+<ol>
+<li>只有 Admin 可以新建报表，点击创建按钮打开弹出框</li>
+<li>输入名称</li>
+<li>选择 Previous report</li>
+<li>选择新报表时间段（即请求 AllOrdersReport 的时间段），点击确认按钮新建报表
+
+<ul>
+<li>不允许选择当天（防止数据不全）</li>
+<li>最新的 SettlementReport 未覆盖的时间段不允许选择（获取 SettlementReport 列表的 startdate 为2个月前，不设置 enddate）</li>
+</ul></li>
+<li>生成报表时可以进行其他操作，但不可以关闭页面
+
+<ul>
+<li>同时只允许生成一份报表，正在生成时 Create 按钮处于 disable 状态。打开 Report Name 选择框，可以看到正在生成的报表名字右侧有 spinner 转动。此时删除按钮会被隐藏。</li>
+<li>生成失败的报表在 Report Name 选择框中显示为红色，可以删除重试</li>
+</ul></li>
+</ol></li>
+<li>报表功能
+
+<ul>
+<li>不可编辑</li>
+<li>首行提供排序、筛选、搜索功能</li>
+<li>第二、三四行计算 Subtotal、Total 和 WOW</li>
+</ul></li>
+<li>切换 Child Asin/Parent Asin 报表
+
+<ul>
+<li>将 Child Asin 结果 GroupBy Parent Asin</li>
+<li>依然展示 subtotal wow total 等汇总信息</li>
+</ul></li>
+</ol>
+
+<h5 id="toc_3">生成流程及内容、格式</h5>
+
+<ol>
+<li><p>维护一份 Product Fee (COGS) 表，用于计算 Product Cost，表格按 Modified Date 排序<br>
+数据来源 FBA Fee Preview Report：_GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA_，当用户保存数据时检查当天有没有缓存，缓存过期则在 ReportRequestList 取最近一天的，若也没有就重新生成并等待下载，缓存全局唯一。  <img src="pic/ProductFee.png" alt="Sales Report"> </p>
+
+<ul>
+<li>Data Definition
+
+<ul>
+<li>SKU: 必须填写</li>
+<li>Product: 
+
+<ul>
+<li>保存时根据 SKU 检查最新的 FBA Fee Preview Report，如果可以查到 Product 信息则直接使用；若 Product 信息不存在则使用用户输入；若 Product 信息不存在且无用户输入，则 Product 数据显示为0</li>
+<li>若使用用户输入的 longest-side, median-side, shortest-side，保存时从大到小排序</li>
+<li>Product 数据合法范围为 [0, +∞)</li>
+</ul></li>
+<li>Carton: 
+
+<ul>
+<li>保存用户输入的 Longest Side (cm), Medium Side (cm), Shortest Side (cm) 时从大到小排序</li>
+<li>若 Longest Side (cm), Medium Side (cm), Shortest Side (cm) 中有一项未输入或输入为0，则三项均使用默认数据，即使用 Product 对应的 longest-side, median-side, shortest-side </li>
+<li>Case Pack 默认为1，留空时也取1</li>
+<li>Carton Weight (kg) 留空或输入0时，使用 Product Weight</li>
+<li>Carton 数据合法范围为 [0, +∞)</li>
+<li>Case Pack 数据合法范围为 N+</li>
+</ul></li>
+<li>Freight:
+
+<ul>
+<li>Type，在单个新增/修改及上传文件中均提供当前可用的 Type 供用户选择， 默认设为 40&#39; Cnt，留空时也取 40&#39; Cnt</li>
+<li>Load Rate 默认为100%，留空时也取 100%，数据合法范围为 (0, +∞)</li>
+</ul></li>
+<li>Duty: 留空时取 0%，数据合法范围为 [0, +∞)</li>
+<li>Price:
+
+<ul>
+<li>FOB Price 和 LDP Price 两项需要至少填写一项，有用户输入时使用用户输入值，无用户输入时根据另一项及其他项进行计算</li>
+<li>ldp<em>cost = fob</em>price + freight<em>cost + duty</em>cost</li>
+<li>合法范围均为 (0, +∞)</li>
+</ul></li>
+<li>Effective Date: 
+
+<ul>
+<li>单条记录新增/修改：
+
+<ul>
+<li>Effective Date: LDP 的起效时间，默认为当前 PDT 日期，可修改</li>
+</ul></li>
+<li>批量上传
+
+<ul>
+<li>不填写 effective-date 单元格默认使用当前 PDT 日期</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>单位：每个商店有唯一的尺寸、重量、货币单位</li>
+<li>ParentASIN 和 ASIN: 每次进入 ProductFees 时若发现有空缺项，则自动通过 Keepa 获取，直到 token 用光</li>
+<li><p>单条新增、修改<br>
+<img src="pic/ProductFee-add.png" alt="Sales Report"></p>
+
+<ul>
+<li>单条新增
+
+<ul>
+<li>在弹出框中输入新 SKU 及其他值并保存 </li>
+</ul></li>
+<li><p>单条修改</p>
+
+<ol>
+<li>点击修改按钮：打开弹出框进行编辑，除 SKU 外其他值允许修改。保存时检查 SKU + Effective Date 是否与其他条目冲突，若冲突则不允许保存。</li>
+<li>通过新增修改：在新增时填写已存在的 SKU + Effective Date 及其他值，保存时使用当前数据覆盖之前记录。</li>
+</ol></li>
+<li><p>尺寸重量单位换算：单条记录新增/修改的界面上提供单位换算供查看，保存时仍使用商店统一单位</p></li>
+<li><p>数据一致性</p>
+
+<ul>
+<li>整个 Product Fees 中 SKU + Effective Date 为唯一值</li>
+<li>若同时有多位用户编辑同一行，以最后保存的为准</li>
+<li>不刷新看不到打开页面后其他用户做的修改</li>
+</ul></li>
+</ul></li>
+<li><p>批量新增、修改
+<img src="pic/ProductFee-upload.png" alt="Sales Report"></p>
+
+<ul>
+<li>批量新增/修改：下载模板，填写新/旧 SKU 及其他值后上传，模板文件提供 Data Definition 向用户介绍如何填写，其中 Freight Type 和尺寸、重量、货币单位根据下载时的实际情况动态更新</li>
+<li>批量新增和修改可以在同一个文件内进行</li>
+<li>上传成功意味着：
+
+<ul>
+<li>上传的 sku 不存在时，为该 sku 新增一条记录</li>
+<li>上传的 sku 已存在
+
+<ul>
+<li>effective-date 不同，则为该 sku + effective-date 新增一条记录</li>
+<li>effective-date 相同，则覆盖相同 sku + effective-date 的记录</li>
+</ul></li>
+</ul></li>
+<li>上传失败：上传失败时返回上传文件，并将错误用不同颜色标识出来
+
+<ul>
+<li>上传表格中 sku + effective-date 应为唯一值，若出现重复则上传失败，错误标记为黄色</li>
+<li>单元格出现数据格式错误，标记为红色</li>
+<li>SKU 或 ldp-price 未填写，标记为红色</li>
+</ul></li>
+<li>尺寸重量单位换算：使用商店统一单位</li>
+</ul></li>
+<li><p>点击删除按钮删除一行数据<br>
+具体计算见示例 gsheet</p></li>
+</ul></li>
+<li><p>从 MWS API 获取基础数据（Data），这部分数据不需要向用户展示。<br>
+数据的来源有  </p>
+
+<ul>
+<li>AllOrdersReport: _GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_ （根据用户所选的 Merchant 和时间段取，这部分每次都要重新生成）</li>
+<li>AllOrdersReport_patch:_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_ （根据用户所选的 Merchant 和时间段，从开始时间前90天取到开始时间，包括可申请退货的30天，以及退货允许的45天，再预估来回的邮寄时间约15天。这部分可以取之前已生成的）</li>
+<li>SettlementReport: _GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2_（根据用户所选的 Merchant 和时间段，先用比用户所选时间段更大的范围从接口取 request id，再滤出 enddate &gt; 用户所选开始时间 <code>&amp;&amp;</code> startdate &lt; 用户所选结束时间，即与用户所选时间段产生交叉的 SettlementReport。从中把所有项都抽出来，按posted-date-time 过滤，留下时间段内的。AllOrdersReport 相关的 SKU 在 SettlementReport 中查不到是有可能的）</li>
+<li>ProductAdsReport: /v2/sp/productAds/report（根据用户所选的 Merchant 和时间段取，相关的 SKU 在 ProductAdsReport 中查不到是有可能的）</li>
+<li>MerchantListing: _GET_MERCHANT_LISTINGS_DATA_</li>
+<li>ProductFees（第一个 Product Fees[LDP Cost] 时间之前，以及相关的 SKU 在 ProductFees 中查不到时，相关 Product Cost 为0）</li>
+<li>ReturnReport: _GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA_ （根据用户所选的 Merchant 和时间段取）</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">API</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">General</td>
+<td style="text-align: left"><mark>Name</mark></td>
+<td style="text-align: left">根据 SKU 从 MerchantListing 中获取 item-name</td>
+</tr>
+<tr>
+<td style="text-align: left">General</td>
+<td style="text-align: left">Merchant</td>
+<td style="text-align: left">Friends Forever/La Fiore</td>
+</tr>
+<tr>
+<td style="text-align: left">Product</td>
+<td style="text-align: left"><mark>ASIN</mark></td>
+<td style="text-align: left">根据 SKU 从 MerchantListing 中获取 (Child) ASIN</td>
+</tr>
+<tr>
+<td style="text-align: left">Product</td>
+<td style="text-align: left"><mark>Parent ASIN</mark></td>
+<td style="text-align: left">从 keepa 获取</td>
+</tr>
+<tr>
+<td style="text-align: left">Product</td>
+<td style="text-align: left"><mark>SKU</mark></td>
+<td style="text-align: left">取 SettlementReport →  sku 与 AllOrdersReport → sku 与 ReturnReport → detailed-disposition <code>==</code> &quot;SELLABLE&quot; 的 sku 和 ProductAdsReport 中 (attributedConversions7dSameSKU <code>||</code> attributedConversions7d <code>||</code> cost) 有值的 sku 的并集</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left"><mark>Total Sales</mark></td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 item-price 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Full Price Gross Sales</td>
+<td style="text-align: left">各个 SKU 的 Total Sales <code>-</code> Promo Sales</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Shipping</td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 shipping-price 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Taxes</td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 item-tax <code>+</code> shipping-tax <code>+</code> gift-wrap-tax 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Amz Withheld Taxes</td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>=</code> &quot;Order&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemWithheldTax&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Gift Wrap</td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 gift-wrap-price 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left"><mark>Reimbursements</mark></td>
+<td style="text-align: left">取 SettlementReport → amount-type <code>==</code> &quot;FBA Inventory Reimbursement&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left"><mark>Total Orders</mark></td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的条目数之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left"><mark>Total Units</mark></td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 quantity 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross</td>
+<td style="text-align: left">Full Price Units</td>
+<td style="text-align: left">各个 SKU 的 Total Units <code>-</code> Promo Units</td>
+</tr>
+<tr>
+<td style="text-align: left">Promos</td>
+<td style="text-align: left">Promo Sales</td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; <code>&amp;&amp;</code> item-promotion-discount <code>!=</code> &quot;NULL&quot; 的各个 SKU 的 item-price 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Promos</td>
+<td style="text-align: left"><mark>Discounts</mark></td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; 的各个 SKU 的 item-promotion-discount 之和，设为负数</td>
+</tr>
+<tr>
+<td style="text-align: left">Promos</td>
+<td style="text-align: left">Promo Units</td>
+<td style="text-align: left">AllOrdersReport → order-status <code>!=</code> &quot;Cancelled&quot; <code>&amp;&amp;</code> item-promotion-discount <code>!=</code> &quot;NULL&quot; 的各个 SKU 的 quantity 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Refunds</td>
+<td style="text-align: left">Refunds</td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemPrice&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Principal&quot; 的各个 SKU 的条目数之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Refunds</td>
+<td style="text-align: left">Refund Sales</td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> (amount-type <code>==</code> &quot;ItemPrice&quot; <code>||</code> amount-type <code>==</code> &quot;Promotion&quot;) 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Refunds</td>
+<td style="text-align: left">Refund Fees</td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>==</code> &quot;ItemFees&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Refunds</td>
+<td style="text-align: left"><mark>Net Refund</mark></td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>==</code> &quot;Refund&quot; <code>&amp;&amp;</code> amount-type <code>!=</code> &quot;ItemWithheldTax&quot; <code>&amp;&amp;</code> (amount-description <code>!=</code> &quot;Tax&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;Shipping&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;ShippingTax&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;ShippingChargeback&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;GiftWrap&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;GiftWrapTax&quot; <code>&amp;&amp;</code> amount-description <code>!=</code> &quot;GiftwrapChargeback&quot;) 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Organic/PPC Orders</td>
+<td style="text-align: left">Organic Orders</td>
+<td style="text-align: left">各个 SKU 的 Total Orders <code>-</code> All SKUs PPC Orders</td>
+</tr>
+<tr>
+<td style="text-align: left">Organic/PPC Orders</td>
+<td style="text-align: left">Same SKU PPC Orders</td>
+<td style="text-align: left">ProductAdsReport 各个 SKU 的 attributedConversions7dSameSKU 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Organic/PPC Orders</td>
+<td style="text-align: left">All SKUs PPC Orders</td>
+<td style="text-align: left">ProductAdsReport 各个 SKU 的 attributedConversions7d 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">FBA Fees</td>
+<td style="text-align: left"><mark>Pick &amp; Pack</mark></td>
+<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAPerUnitFulfillmentFee&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">FBA Fees</td>
+<td style="text-align: left"><mark>Handling Fee</mark></td>
+<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAPerOrderFulfillmentFee&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">FBA Fees</td>
+<td style="text-align: left"><mark>Weight Handling</mark></td>
+<td style="text-align: left">SettlementReport → amount-description <code>==</code> &quot;FBAWeightBasedFee&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">FBA Fees</td>
+<td style="text-align: left">Variable Cost</td>
+<td style="text-align: left">只有 Media items 才有这个费用（设为0）</td>
+</tr>
+<tr>
+<td style="text-align: left">FBA Fees</td>
+<td style="text-align: left"><mark>Total FBA Fees</mark></td>
+<td style="text-align: left">各个 SKU 的 Pick &amp; Pack <code>+</code> Handling Fee <code>+</code> Weight Handling <code>+</code> Variable Cost</td>
+</tr>
+<tr>
+<td style="text-align: left">Commission</td>
+<td style="text-align: left"><mark>Refer Fees</mark></td>
+<td style="text-align: left">SettlementReport → transaction-type <code>==</code> &quot;Order&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Commission&quot; 的各个 SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Cost</td>
+<td style="text-align: left"><mark>Product Cost</mark></td>
+<td style="text-align: left">每次查看时根据 AllOrdersReport 中的 purchase-date <code>&amp;</code> sku 从 ProductFees 获取适用的 EffectiveDate <code>&amp;</code> sku <code>&amp;</code> LDPCost，计算方式为 groupby sku，取每个 EffectiveDate 生效时间段的 LDP Cost <code>×</code> Total Units（）求和，设为负数。每次打开 Sales Report 时，更新相关的 Data 中本项，使得 Product Cost 永远随着 Product Fee 的更新而更新。</td>
+</tr>
+<tr>
+<td style="text-align: left">Cost</td>
+<td style="text-align: left"><mark>Return Credit</mark></td>
+<td style="text-align: left">取 ReturnReport → detailed-disposition <code>==</code> &quot;SELLABLE&quot; 的 order-id 去 (AllOrdersReport + AllOrdersReport_patch) 查找 purchase-date，再根据 purchase-date <code>&amp;</code> sku 从 ProductFees 获取适用的 EffectiveDate <code>&amp;</code> sku <code>&amp;</code> LDPCost，计算方式为 groupby return-sku (ReturnReport → detailed-disposition <code>==</code> &quot;SELLABLE&quot; 的各个 sku)，取每个 EffectiveDate 生效时间段的 LDP Cost <code>×</code> return-quantity (ReturnReport → detailed-disposition <code>==</code> &quot;SELLABLE&quot; 的各个 sku 的 quantity 之和)，设为正数。如果在 (AllOrdersReport + AllOrdersReport_patch) 中未找到 order-id 或 ProductFees 不存在相关时间的 sku，此件就计为0。</td>
+</tr>
+<tr>
+<td style="text-align: left">Cost</td>
+<td style="text-align: left"><mark>Ads</mark></td>
+<td style="text-align: left">ProductAdsReport 各个 SKU 的 cost，设为负数</td>
+</tr>
+<tr>
+<td style="text-align: left">Cost</td>
+<td style="text-align: left"><mark>Total Costs</mark></td>
+<td style="text-align: left">各个 SKU 的 Product Cost <code>+</code> Ads <code>+</code> Return Credit</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Total Gross Sales</mark></td>
+<td style="text-align: left">各个 SKU 的 Gross [Total Sales] <code>+</code> Gross [Reimbursements]（因为我们不考虑收取后还要交出去的 Shipping、Taxes 和 Gift Wrap，以及 被托管的 Amz Withheld Taxes）</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Amz FBM Postage</mark></td>
+<td style="text-align: left">取 SettlementReport → transaction-type <code>==</code> &quot;other-transaction&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;Shipping label purchase&quot; 的各个 order-id，groupby (AllOrdersReport + AllOrdersReport_patch)中第一个对应的SKU 的 amount 之和</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Promo Discounts</mark></td>
+<td style="text-align: left">Promo[Discount]</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>FBA Fees</mark></td>
+<td style="text-align: left">各个 SKU 的 FBAFees[Total FBA Fees]</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Other Transactions</mark></td>
+<td style="text-align: left">取 SettlementReport → amount-type <code>==</code> &quot;ItemFees&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;SalesTaxServiceFee&quot; 的各个 SKU 的 amount 之和 <mark>以及</mark> 取 SettlementReport → amount-type <code>==</code> &quot;ItemFees&quot; <code>&amp;&amp;</code> amount-description <code>==</code> &quot;FBACustomerReturnPerUnitFee&quot; 的各个 order-id，groupby(AllOrdersReport + AllOrdersReport_patch)中第一个对应的SKU 的 amount 之和 <mark>相加</mark></td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Commissions</mark></td>
+<td style="text-align: left">各个 SKU 的 Commission</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Costs</mark></td>
+<td style="text-align: left">各个 SKU 的 Cost[Total Cost]</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Refund Total</mark></td>
+<td style="text-align: left">各个 SKU 的 Refund[Net Refund]</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Profit</td>
+<td style="text-align: left"><mark>Net Profit</mark></td>
+<td style="text-align: left">各个 SKU 的 [Net Profit] 相关项相加，即 Total Gross Sales <code>+</code> Amz FBM Postage  <code>+</code> Promo Discounts <code>+</code> FBA Fees <code>+</code> Other Transactions <code>+</code> Commissions <code>+</code> Costs <code>+</code> Refund Total</td>
+</tr>
+<tr>
+<td style="text-align: left">Stats</td>
+<td style="text-align: left"><mark>ROI</mark></td>
+<td style="text-align: left"><code>-</code> Net Profit <code>/</code> Product Cost</td>
+</tr>
+<tr>
+<td style="text-align: left">Stats</td>
+<td style="text-align: left"><mark>Margin</mark></td>
+<td style="text-align: left">Net Profit <code>/</code> Total Gross Sales</td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Session %</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Page Views</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Page Views %</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Buy Box</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Unit Sess %</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">Currency</td>
+<td style="text-align: left">USD</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>根据用户的选择设定 Previous</p></li>
+<li><p>根据用户输入命名生成的 Current 报表</p>
+
+<ol>
+<li><p>第一行的内容为：</p>
+
+<div><pre class="line-numbers"><code class="language-python">Current_line1 = [
+    &#39;Name&#39;, &#39;ASIN&#39;, &#39;Parent ASIN&#39;, &#39;SKU&#39;, 
+    &#39;Total Gross Sales&#39;, &#39;WOW Change&#39;, &#39;Percentage&#39;, &#39;Total Orders&#39;, &#39;Total Units&#39;, &#39;WOW Change&#39;, 
+    &#39;Discounts&#39;, &#39;Promo Percentage&#39;, 
+    &#39;Net Refund&#39;, &#39;Refund Percentage&#39;, 
+    &#39;Ads&#39;, &#39;Ads Percentage&#39;, 
+    &#39;ROI&#39;, &#39;WOW Change&#39;, &#39;Profit&#39;, &#39;WOW Change&#39;, &#39;Margin&#39;, &#39;WOW Change&#39;, 
+    &#39;Sessions&#39;, &#39;WOW Change&#39;, &#39;Unit Sess %&#39;, &#39;WOW Change&#39;
+]</code></pre></div></li>
+<li><p>第二行计算当前筛选出的内容的 Subtotal</p>
+
+<div><pre class="line-numbers"><code class="language-python">Current_line2 = [
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;Sub Total&#39;, Subtotal(Current[Total Gross Sales]), &#39;&#39;, &#39;&#39;,
+    Subtotal(Current[Total Orders]), Subtotal(Current[Total Units]), &#39;&#39;,
+    Subtotal(Current[Discount]), Subtotal(Current[Discount])/Subtotal(Current[Total Gross Sales]),
+    Subtotal(Current[Net Refund]), Subtotal(Current[Net Refund])/Subtotal(Current[Total Gross Sales]),
+    Subtotal(Current[Ads]), Subtotal(Current[Ads])/Subtotal(Current[Total Gross Sales]), &#39;&#39;, &#39;&#39;,
+    Subtotal(Current[Profit]), Subtotal(Current[WOW Change(Profit)]), 
+    Subtotal(Current[Profit])/Subtotal(Current[Total Gross Sales]), &#39;&#39;,
+    Subtotal(Current[Sessions])
+]</code></pre></div></li>
+<li><p>以 SKU 为 Key， 从 Data 和 Previous 查询、计算以下值</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Formula</th>
+<th style="text-align: left">Format</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">Name</td>
+<td style="text-align: left">Data[General][Name]</td>
+<td style="text-align: left">STRING</td>
+</tr>
+<tr>
+<td style="text-align: left">ASIN</td>
+<td style="text-align: left">Data[Product][ASIN]</td>
+<td style="text-align: left">STRING</td>
+</tr>
+<tr>
+<td style="text-align: left">Parent ASIN</td>
+<td style="text-align: left">Data[Product][Parent ASIN]</td>
+<td style="text-align: left">STRING</td>
+</tr>
+<tr>
+<td style="text-align: left">SKU</td>
+<td style="text-align: left">Data[Product][SKU]</td>
+<td style="text-align: left">STRING</td>
+</tr>
+<tr>
+<td style="text-align: left">Total Gross Sales</td>
+<td style="text-align: left">Data[Net Profit][Total Gross Sales]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Total Gross Sales)</td>
+<td style="text-align: left">Current[Total Gross Sales] - Previous[Total Gross Sales]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Percentage</td>
+<td style="text-align: left">Current[Total Gross Sales][WOW Change]/Previous[Total Gross Salese]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Total Orders</td>
+<td style="text-align: left">Data[Total Orders]</td>
+<td style="text-align: left">INTEGER</td>
+</tr>
+<tr>
+<td style="text-align: left">Total Units</td>
+<td style="text-align: left">Data[Total Units]</td>
+<td style="text-align: left">INTEGER</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Total Units)</td>
+<td style="text-align: left">(Current[Total Units]-Previous[Total Units])/Previous[Total Units]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Discounts</td>
+<td style="text-align: left">Data[Promos][Discounts]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Promo Percentage</td>
+<td style="text-align: left">- Current[Discounts]/Current[Total Gross Sales]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Refund</td>
+<td style="text-align: left">Data[Refunds][Net Refund]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Refund Percentage</td>
+<td style="text-align: left">- Current[Net Refund]/Current[Total Gross Sales]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Ads</td>
+<td style="text-align: left">Data[Cost][Ads]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Ads Percentage</td>
+<td style="text-align: left">- Current[Ads]/Current[Total Gross Sales]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">ROI</td>
+<td style="text-align: left">Data[Stats][ROI]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(ROI)</td>
+<td style="text-align: left">Current[ROI]-Previous[ROI]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Profit</td>
+<td style="text-align: left">Data[Net Profit][Net Profit]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Profit)</td>
+<td style="text-align: left">Current[Profit]-Previous[Profit]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Margin</td>
+<td style="text-align: left">Data[Stats][Margin]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Margin)</td>
+<td style="text-align: left">Current[Margin]-Previous[Margin]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Sessions</td>
+<td style="text-align: left">Data[Sessions][Sessions]</td>
+<td style="text-align: left">INTEGER</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Sessions)</td>
+<td style="text-align: left">(Current[Sessions]-Previous[Sessions])/Previous[Sessions]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Unit Sess %</td>
+<td style="text-align: left">Data[Sessions][Unit Sess % ]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">WOW Change(Unit Sess %)</td>
+<td style="text-align: left">Current[Unit Sess %]-Previous[Unit Sess %]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre class="line-numbers"><code class="language-javascript">ACCOUNTING = &#39;$#,##0.00;[Red]$(#,##0.00)&#39;
+PERCENT = &#39;0.00%;[Red]0.00%&#39;</code></pre></div></li>
+<li><p>表格下方显示 Total 和 WOW</p>
+
+<div><pre class="line-numbers"><code class="language-python">Current_total = [
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;Total&#39;, Sum(Current[Total Gross Sales]), &#39;&#39;, &#39;&#39;,
+    Sum(Current[Total Orders]), Sum(Current[Total Units]), &#39;&#39;,
+    Sum(Current[Discount]), Sum(Current[Discount])/Sum(Current[Total Gross Sales]),
+    Sum(Current[Net Refund]), Sum(Current[Net Refund])/Sum(Current[Total Gross Sales]),
+    Sum(Current[Ads]), Sum(Current[Ads])/Sum(Current[Total Gross Sales]), &#39;&#39;, &#39;&#39;,
+    Sum(Current[Profit]), Sum(Current[WOW Change(Profit)]), 
+    Sum(Current[Profit])/Sum(Current[Total Gross Sales]), &#39;&#39;,
+    Sum(Current[Sessions])
+]
+
+Current_wow = [
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;WOW&#39;, Current_total[4]-Previous.Current_total[4], &#39;&#39;, &#39;&#39;,
+    Current_total[7]-Previous.Current_total[7], Current_total[8]-Previous.Current_total[8],
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;,
+    Current_total[22]-Previous.Current_total[22]
+]
+
+Current_last_row = [
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, Current_wow[4]/(Current_total[4]-Current_wow[4]) &#39;&#39;, &#39;&#39;,
+    Current_wow[7]/(Current_total[7]-Current_wow[7]), 
+    Current_wow[8]/(Current_total[8]-Current_wow[8]),
+    &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;,
+    Current_wow[22]/(Current_total[22]-Current_wow[22])
+]</code></pre></div></li>
+<li><p>给以下列加上条件格式</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">conditional_format_req = [
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [colunm[&#39;WOW Change(Total Gross Sales)&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;-1000&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;white&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;0&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;1000&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 0
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Percentage&#39;], 
+                           column[&#39;WOW Change(Total Units)&#39;], column[&#39;WOW Change(ROI)&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;-20%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;white&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;0%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;20%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 1
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Promo Percentage&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;3%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;pink&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;6%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;orange&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;10%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 2
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Refund Percentage&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;2%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;orange&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;5%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;7%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 3
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[Ads Percentage]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;3%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;10%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;20%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 4
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;ROI&#39;]],
+                &#39;booleanRule&#39;: {
+                    &quot;condition&quot;: {
+                        &quot;type&quot;: &quot;NUMBER_LESS_THAN_EQ&quot;,
+                        &quot;values&quot;: [
+                            {
+                            &quot;userEnteredValue&quot;: &quot;30%&quot;
+                            }
+                        ]
+                    },
+                    &quot;format&quot;: {
+                        &quot;backgroundColor&quot;: colors[&#39;green&#39;]
+                    }
+                }
+            },
+            &#39;index&#39;: 5
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Margin&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;7%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;pink&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;15%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;25%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 6
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;WOW Change(Margin)&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;-8%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;white&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;0%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;20%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 7
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Sessions&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;30&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;light_green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;200&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;white&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;420&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 8
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;WOW Change(Sessions)&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;green&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;-10%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;white&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;5%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;20%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 9
+        }
+    },
+    {
+        &#39;addConditionalFormatRule&#39;: {
+            &#39;rule&#39;: {
+                &#39;ranges&#39;: [column[&#39;Unit Sess %&#39;]],
+                &#39;gradientRule&#39;: {
+                    &#39;minpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;orange&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;5%&#39;
+                    },
+                    &#39;midpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;pink&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;12.5%&#39;
+                    },
+                    &#39;maxpoint&#39;: {
+                        &#39;color&#39;: colors[&#39;red&#39;],
+                        &#39;type&#39;: &#39;NUMBER&#39;,
+                        &#39;value&#39;: &#39;20%&#39;
+                    }
+                }
+            },
+            &#39;index&#39;: 10
+        }
+    }
+]</code></pre></div></li>
+</ol></li>
+</ol>
+
+<h4 id="toc_4">Budget Report</h4>
+
+<p><img src="pic/BudgetReport.png" alt="Budget Report"><br>
+<img src="pic/NewBudgetReport.png" alt="Budget Report"> </p>
+
+<h5 id="toc_5">页面交互</h5>
+
+<ol>
+<li>选择 Merchant</li>
+<li>选择报表，报表按时间从新到旧排列
+
+<ul>
+<li>删除报表：Admin 可以在报表选择框删除报表，每次只允许删除最新（按数据库生成时间）的一个</li>
+</ul></li>
+<li>Customize Columns，选择展示的列，默认全选</li>
+<li>新建报表
+
+<ol>
+<li>只有 Admin 可以新建报表，点击创建按钮打开弹出框</li>
+<li>输入名称</li>
+<li>选择 Previous Sales Report（提供月销售报表供选择）</li>
+<li>选择 Previous Budget Report，点击确认按钮新建报表。一旦 Current Budget 被确认为 Previous Budget ，就不允许更改了。</li>
+<li>生成报表时可以进行其他操作，但不可以关闭页面
+
+<ul>
+<li>同时只允许生成一份报表，正在生成时 Create 按钮处于 disable 状态。打开 Report Name 选择框，可以看到正在生成的报表名字右侧有 spinner 转动。此时删除按钮会被隐藏。</li>
+<li>生成失败的报表在 Report Name 选择框中显示为红色，可以删除重试</li>
+</ul></li>
+</ol></li>
+<li>报表功能
+
+<ul>
+<li>第二行提供排序、筛选、搜索功能</li>
+<li>第三、第四行计算 Subtotal、Total</li>
+<li>报表类型（Tab 切换）
+
+<ul>
+<li>Month Budget，当前月份可编辑<br>
+
+<ul>
+<li>首行只有 Admin 可修改，修改结果会对某单元格产生影响（具体见示例文件）</li>
+<li>某些列允许修改，修改结果会对同一行的某些数据产生影响（具体见示例文件）</li>
+</ul></li>
+<li>Parent ASIN Budget
+
+<ul>
+<li>不可编辑，从 Month Budget 获取数据</li>
+<li>依然展示 subtotal wow total 等汇总信息</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+
+<h5 id="toc_6">生成流程及内容、格式</h5>
+
+<ul>
+<li><p>Month Budget</p>
+
+<ol>
+<li>根据用户所选获取 Previous Sales Report (PreSales)</li>
+<li>根据用户所选获取 Previous Budget Report (PreBudget)</li>
+<li><p>根据用户输入命名生成的 Current Budget Report (CurBudget)  </p>
+
+<ol>
+<li><p>第一行与第二行内容为：</p>
+
+<div><pre class="line-numbers"><code class="language-python">CurBudget_line1 = [&#39;&#39;] * 42
+
+CurBudget_line1[2 ] = CurBudget_line1[11]
+                     + CurBudget_line1[16]
+                     + CurBudget_line1[21]
+                     + CurBudget_line1[26]
+                     + CurBudget_line1[31]
+CurBudget_line1[3 ] = &#39;General Margin&#39;
+CurBudget_line1[4 ] = PreBudget_line1[4] 
+# Admin 可修改
+CurBudget_line1[5 ] = &#39;Overall&#39;
+# 合并 CurBudget_line1[5] 至 CurBudget_line1[10]
+CurBudget_line1[11] = PreBudget_line1[11]
+# Admin 可修改
+CurBudget_line1[12] = &#39;Ads&#39;
+# 合并 CurBudget_line1[12] 至 CurBudget_line1[15]
+CurBudget_line1[16] = PreBudget_line1[16]
+# Admin 可修改
+CurBudget_line1[17] = &#39;Review&#39;
+# 合并 CurBudget_line1[17] 至 CurBudget_line1[20]
+CurBudget_line1[21] = PreBudget_line1[21]
+# Admin 可修改
+CurBudget_line1[22] = &#39;Social&#39;
+# 合并 CurBudget_line1[22] 至 CurBudget_line1[25]
+CurBudget_line1[26] = PreBudget_line1[26]
+# Admin 可修改
+CurBudget_line1[27] = &#39;Promo/Deal&#39;
+# 合并 CurBudget_line1[26] 至 CurBudget_line1[30]
+CurBudget_line1[31] = PreBudget_line1[31]
+# Admin 可修改
+CurBudget_line1[32] = &#39;Photo/Video&#39;
+# 合并 CurBudget_line1[32] 至 CurBudget_line1[35]</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">CurBudget_line2 = [&#39;Name&#39;, &#39;ASIN&#39;, &#39;Parent ASIN&#39;, &#39;SKU&#39;,
+                    &#39;Total Gross Sales&#39;, &#39;Profit&#39;, &#39;Gross Margin&#39;, &#39;Target Margin&#39;, &#39;Targeted Profit&#39;, &#39;Real Margin&#39;, &#39;Total Balance&#39;,
+                    &#39;Portion&#39;, &#39;Budget&#39;, &#39;Actual&#39;, &#39;Gain&#39;, &#39;Balance&#39;,
+                    &#39;Portion&#39;, &#39;Budget&#39;, &#39;Actual&#39;, &#39;Gain&#39;, &#39;Balance&#39;,
+                    &#39;Portion&#39;, &#39;Budget&#39;, &#39;Actual&#39;, &#39;Gain&#39;, &#39;Balance&#39;,
+                    &#39;Portion&#39;, &#39;Budget&#39;, &#39;Actual&#39;, &#39;Gain&#39;, &#39;Balance&#39;,
+                    &#39;Portion&#39;, &#39;Budget&#39;, &#39;Actual&#39;, &#39;Gain&#39;, &#39;Balance&#39;,
+                    &#39;Ads&#39;, &#39;Review&#39;, &#39;Social&#39;, &#39;Promo&#39;, &#39;Photo&#39;, &#39;Sum&#39;]</code></pre></div></li>
+<li><p>第三行计算当前筛选出的内容的 Subtotal</p>
+
+<div><pre class="line-numbers"><code class="language-python">CurBudget_line3 = [
+&#39;&#39;, &#39;&#39;, &#39;Sub Total&#39;, &#39;&#39;, Subtotal(CurBudget[Total Gross Sales]), Subtotal(CurBudget[Profit]), &#39;&#39;, 
+Subtotal(CurBudget[Target Profit])/Subtotal(CurBudget[Total Gross Sales]), 
+Subtotal(CurBudget[Target Profit]), 
+Subtotal(CurBudget[Profit])/Subtotal(CurBudget[Total Gross Sales]),
+Subtotal(CurBudget[Total Balance]),
+&#39;&#39;, Subtotal(CurBudget[Budget(Ads)]), Subtotal(CurBudget[Actual(Ads)]), Subtotal(CurBudget[Gain(Ads)]), Subtotal(CurBudget[Balance(Ads)]),
+&#39;&#39;, Subtotal(CurBudget[Budget(Review)]), Subtotal(CurBudget[Actual(Review)]), Subtotal(CurBudget[Gain(Review)]), Subtotal(CurBudget[Balance(Review)]),
+&#39;&#39;, Subtotal(CurBudget[Budget(Social)]), Subtotal(CurBudget[Actual(Social)]), Subtotal(CurBudget[Gain(Social)]), Subtotal(CurBudget[Balance(Social)]),
+&#39;&#39;, Subtotal(CurBudget[Budget(Promo)]), Subtotal(CurBudget[Actual(Promo)]), Subtotal(CurBudget[Gain(Promo)]), Subtotal(CurBudget[Balance(Promo)]),
+&#39;&#39;, Subtotal(CurBudget[Budget(Photo)]), Subtotal(CurBudget[Actual(Photo)]), Subtotal(CurBudget[Gain(Photo)]), Subtotal(CurBudget[Balance(Photo)]),
+&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]</code></pre></div></li>
+<li><p>以 SKU 为 Key， 从 Previous Sales Report 和 Previous Budget Report 查询、计算以下值</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Formula</th>
+<th style="text-align: left">Format</th>
+<th style="text-align: left">Editable</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">Name</td>
+<td style="text-align: left">PreSales[Name]</td>
+<td style="text-align: left">STRING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">ASIN</td>
+<td style="text-align: left">PreSales[ASIN]</td>
+<td style="text-align: left">STRING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Parent ASIN</td>
+<td style="text-align: left">PreSales[Parent ASIN]</td>
+<td style="text-align: left">STRING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">SKU</td>
+<td style="text-align: left">PreSales[SKU]</td>
+<td style="text-align: left">STRING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Total Gross Sales</td>
+<td style="text-align: left">PreSales[Total Sales]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Profit</td>
+<td style="text-align: left">PreSales[Profit]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Gross Margin</td>
+<td style="text-align: left">PreSales[Promo Percentage] <code>+</code> PreSales[Ads Percentage] <code>+</code> PreSales[Margin]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Target Margin</td>
+<td style="text-align: left">PreBudget[Target Margin]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Target Profit</td>
+<td style="text-align: left">CurBudget[Total Gross Sales] * (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Real Margin</td>
+<td style="text-align: left">CurBudget[Gross Margin] <code>-</code> (CurBudget[Actual(Ads)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Review)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Social)] <code>/</code> CurBudget[Total Gross Sales] <code>+</code> CurBudget[Actual(Promo)] <code>/</code>CurBudget[Total Gross Sales] <code>+</code>  CurBudget[Actual(Photo)] <code>/</code>CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Total Balance</td>
+<td style="text-align: left">CurBudget[Balance(Ads)] <code>+</code> CurBudget[Balance(Review)] <code>+</code> CurBudget[Balance(Social)] <code>+</code> CurBudget[Balance(Promo)] <code>+</code> CurBudget[Balance(Photo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Portion(Ads)</td>
+<td style="text-align: left">PreBudget[Portion(Ads)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Budget(Ads)</td>
+<td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Ads)] <code>?</code> CurBudget[Portion(Ads)] <code>:</code> CurBudget_line1[11]) <code>*</code> CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Actual(Ads)</td>
+<td style="text-align: left">PreSales[Ads Percentage] <code>*</code> CurBudget[Total Gross Sales]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Gain(Ads)</td>
+<td style="text-align: left">CurBudget[Budget(Ads)] <code>-</code> CurBudget[Actual(Ads)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Balance(Ads)</td>
+<td style="text-align: left">CurBudget[Gain(Ads)] <code>+</code> PreBudget[Balance(Ads)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Portion(Review)</td>
+<td style="text-align: left">PreBudget[Portion(Review)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Budget(Review)</td>
+<td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Review)] <code>?</code> CurBudget[Portion(Review)] <code>:</code> CurBudget_line1[16]) <code>*</code> CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Actual(Review)</td>
+<td style="text-align: left"></td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Gain(Review)</td>
+<td style="text-align: left">CurBudget[Budget(Review)] <code>-</code> CurBudget[Actual(Review)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Balance(Review)</td>
+<td style="text-align: left">CurBudget[Gain(Review)] <code>+</code> PreBudget[Balance(Review)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Portion(Social)</td>
+<td style="text-align: left">PreBudget[Portion(Social)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Budget(Social)</td>
+<td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Social)] <code>?</code> CurBudget[Portion(Social)] <code>:</code> CurBudget_line1[21]) <code>*</code> CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Actual(Social)</td>
+<td style="text-align: left"></td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Gain(Social)</td>
+<td style="text-align: left">CurBudget[Budget(Social)] <code>-</code> CurBudget[Actual(Social)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Balance(Social)</td>
+<td style="text-align: left">CurBudget[Gain(Social)] <code>+</code> PreBudget[Balance(Social)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Portion(Promo)</td>
+<td style="text-align: left">PreBudget[Portion(Promo)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Budget(Promo)</td>
+<td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Promo)] <code>?</code> CurBudget[Portion(Promo)] <code>:</code> CurBudget_line1[26]) <code>*</code> CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Actual(Promo)</td>
+<td style="text-align: left"></td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Gain(Promo )</td>
+<td style="text-align: left">CurBudget[Budget(Promo)] <code>-</code> CurBudget[Actual(Promo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Balance(Promo)</td>
+<td style="text-align: left">CurBudget[Gain(Promo)] <code>+</code> PreBudget[Balance(Promo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Portion(Photo)</td>
+<td style="text-align: left">PreBudget[Portion(Photo)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Budget(Photo)</td>
+<td style="text-align: left">(CurBudget[Gross Margin] <code>-</code> (CurBudget[Target Margin] <code>?</code> CurBudget[Target Margin] <code>:</code> CurBudget_line1[4])) <code>*</code> ((CurBudget[Portion(Photo)] <code>?</code> CurBudget[Portion(Photo)] <code>:</code> CurBudget_line1[31]) <code>*</code> CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Actual(Photo)</td>
+<td style="text-align: left"></td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left">Gain(Photo)</td>
+<td style="text-align: left">CurBudget[Budget(Photo)] <code>-</code> CurBudget[Actual(Photo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Balance(Photo)</td>
+<td style="text-align: left">CurBudget[Gain(Photo)] <code>+</code> PreBudget[Balance(Photo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Ads</td>
+<td style="text-align: left">CurBudget[Portion(Ads)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Review</td>
+<td style="text-align: left">CurBudget[Portion(Review)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Social</td>
+<td style="text-align: left">CurBudget[Portion(Social)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Promo</td>
+<td style="text-align: left">CurBudget[Portion(Promo)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Photo</td>
+<td style="text-align: left">CurBudget[Portion(Photo)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">Sum</td>
+<td style="text-align: left">CurBudget[Portion(Ads)] <code>+</code> CurBudget[Portion(Review)] <code>+</code> CurBudget[Portion(Social)] <code>+</code> CurBudget[Portion(Promo)] <code>+</code> CurBudget[Portion(Photo)]</td>
+<td style="text-align: left">PERCENT</td>
+<td style="text-align: left"></td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+<li><p>表格下方显示 Total</p>
+
+<div><pre class="line-numbers"><code class="language-python">CurBudget_total = [
+&#39;&#39;, &#39;&#39;, &#39;Total&#39;, &#39;&#39;, Sum(CurBudget[Total Gross Sales]), Sum(CurBudget[Profit]), &#39;&#39;, 
+Sum(CurBudget[Target Profit])/Sum(CurBudget[Total Gross Sales]), 
+Sum(CurBudget[Target Profit]), 
+Sum(CurBudget[Profit])/Sum(CurBudget[Total Gross Sales]),
+Sum(CurBudget[Total Balance]),
+&#39;&#39;, Sum(CurBudget[Budget(Ads)]), Sum(CurBudget[Actual(Ads)]), Sum(CurBudget[Gain(Ads)]), Sum(CurBudget[Balance(Ads)]),
+&#39;&#39;, Sum(CurBudget[Budget(Review)]), Sum(CurBudget[Actual(Review)]), Sum(CurBudget[Gain(Review)]), Sum(CurBudget[Balance(Review)]),
+&#39;&#39;, Sum(CurBudget[Budget(Social)]), Sum(CurBudget[Actual(Social)]), Sum(CurBudget[Gain(Social)]), Sum(CurBudget[Balance(Social)]),
+&#39;&#39;, Sum(CurBudget[Budget(Promo)]), Sum(CurBudget[Actual(Promo)]), Sum(CurBudget[Gain(Promo)]), Sum(CurBudget[Balance(Promo)]),
+&#39;&#39;, Sum(CurBudget[Budget(Photo)]), Sum(CurBudget[Actual(Photo)]), Sum(CurBudget[Gain(Photo)]), Sum(CurBudget[Balance(Photo)]),
+&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]</code></pre></div></li>
+</ol></li>
+<li><p>Parent ASIN Budget<br>
+通过 Current Budget Report (CurBudget) 生成 Parent ASIN Budget (PAsinBudget)  </p>
+
+<ol>
+<li><p>第一行与第二行内容为：</p>
+
+<div><pre class="line-numbers"><code class="language-python">PAsinBudget_line1 = [&#39;&#39;] * 25
+
+PAsinBudget_line1[1] = CurBudget_line1[4]
+PAsinBudget_line1[2] = &#39;Overall&#39;
+# 合并 PAsinBudget_line1[2] 至 PAsinBudget_line1[4]
+PAsinBudget_line1[5] = &#39;Ads&#39;
+# 合并 PAsinBudget_line1[5] 至 PAsinBudget_line1[8]
+PAsinBudget_line1[9] = &#39;Review&#39;
+# 合并 PAsinBudget_line1[9] 至 CurBudget_line1[12]
+PAsinBudget_line1[13] = &#39;Social&#39;
+# 合并 PAsinBudget_line1[13] 至 CurBudget_line1[16]
+PAsinBudget_line1[17] = &#39;Promo/Deal&#39;
+# 合并 PAsinBudget_line1[17] 至 PAsinBudget_line1[20]
+PAsinBudget_line1[21] = &#39;Photo/Video&#39;
+# 合并 PAsinBudget_line1[21] 至 PAsinBudget_line1[24]</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">PAsinBudget_line2 = [&#39;Parent ASIN&#39;, &#39;Gross Margin&#39;, &#39;Balance&#39;, &#39;Net Target&#39;, &#39;Real Net&#39;,
+                    &#39;Ads&#39;, &#39;Blance&#39;, &#39;Projected&#39;, &#39;Real&#39;,
+                    &#39;Review&#39;, &#39;Blance&#39;, &#39;Projected&#39;, &#39;Real&#39;,
+                    &#39;Social&#39;, &#39;Blance&#39;, &#39;Projected&#39;, &#39;Real&#39;,
+                    &#39;Promo/Deal&#39;, &#39;Blance&#39;, &#39;Projected&#39;, &#39;Real&#39;,
+                    &#39;Photo/Video&#39;, &#39;Blance&#39;, &#39;Projected&#39;, &#39;Real&#39;]</code></pre></div></li>
+<li><p>第三行计算当前筛选出的内容的 Subtotal</p>
+
+<div><pre class="line-numbers"><code class="language-python">PAsinBudget_line3 = [&#39;&#39;, &#39;Sub Total&#39;, Subtotal(PAsinBudget[Balance(Overall)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Subtotal(PAsinBudget[Balance(Ads)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Subtotal(PAsinBudget[Balance(Review)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Subtotal(PAsinBudget[Balance(Social)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Subtotal(PAsinBudget[Balance(Promo)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Subtotal(PAsinBudget[Balance(Photo)]), &#39;&#39;, &#39;&#39;]</code></pre></div></li>
+<li><p>以 Parent ASIN 为 Key，查询、计算以下值</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Formula</th>
+<th style="text-align: left">Format</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">Parent ASIN</td>
+<td style="text-align: left">CurBudget[Parent ASIN]</td>
+<td style="text-align: left">STRING</td>
+</tr>
+<tr>
+<td style="text-align: left">Gross Margin</td>
+<td style="text-align: left">Sum(CurBudget[Profit])/Sum(CurBudget[Total Gross Sales]) <code>+</code> PAsinBudget[Real(Ads)] <code>+</code> PAsinBudget[Real(Review)] <code>+</code> PAsinBudget[Real(Social)] <code>+</code> PAsinBudget[Real(Promo)] <code>+</code> PAsinBudget[Real(Photo)]</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Balance (Overall)</td>
+<td style="text-align: left">PAsinBudget[Balance(Ads)] <code>+</code> PAsinBudget[Balance(Review)] <code>+</code> PAsinBudget[Balance(Social)] <code>+</code> PAsinBudget[Balance(Promo)] <code>+</code> PAsinBudget[Balance(Photo)]</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Net Target</td>
+<td style="text-align: left">Sum(CurBudget[Target Profit]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real Net</td>
+<td style="text-align: left">Sum(CurBudget[Profit]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Ads</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Ads)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Blance(Ads)</td>
+<td style="text-align: left">Sum(CurBudget[Blance(Ads)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Projected(Ads)</td>
+<td style="text-align: left">Sum(CurBudget[Budget(Ads)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real(Ads)</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Ads)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Review</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Review)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Blance(Review)</td>
+<td style="text-align: left">Sum(CurBudget[Blance(Review)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Projected(Review)</td>
+<td style="text-align: left">Sum(CurBudget[Budget(Review)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real(Review)</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Review)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Social</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Social)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Blance(Social)</td>
+<td style="text-align: left">Sum(CurBudget[Blance(Social)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Projected(Social)</td>
+<td style="text-align: left">Sum(CurBudget[Budget(Social)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real(Social)</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Social)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Promo/Deal</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Promo)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Blance(Promo)</td>
+<td style="text-align: left">Sum(CurBudget[Blance(Promo)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Projected(Promo)</td>
+<td style="text-align: left">Sum(CurBudget[Budget(Promo)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real(Promo)</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Promo)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Photo/Video</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Photo)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Blance(Photo)</td>
+<td style="text-align: left">Sum(CurBudget[Blance(Photo)])</td>
+<td style="text-align: left">ACCOUNTING</td>
+</tr>
+<tr>
+<td style="text-align: left">Projected(Photo)</td>
+<td style="text-align: left">Sum(CurBudget[Budget(Photo)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+<tr>
+<td style="text-align: left">Real(Photo)</td>
+<td style="text-align: left">Sum(CurBudget[Actual(Photo)]) <code>/</code> Sum(CurBudget[Total Gross Sales])</td>
+<td style="text-align: left">PERCENT</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>表格下方显示 Total</p>
+
+<div><pre class="line-numbers"><code class="language-python">PAsinBudget_total = [&#39;&#39;, &#39;Total&#39;, Sum(PAsinBudget[Balance(Overall)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Sum(PAsinBudget[Balance(Ads)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Sum(PAsinBudget[Balance(Review)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Sum(PAsinBudget[Balance(Social)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Sum(PAsinBudget[Balance(Promo)]), &#39;&#39;, &#39;&#39;,
+                    &#39;&#39;, Sum(PAsinBudget[Balance(Photo)]), &#39;&#39;, &#39;&#39;]</code></pre></div></li>
+</ol></li>
+</ul>
+
+<h3 id="toc_7">Product List</h3>
+
+<p>新增 Product 分享功能，一个 Project 可以由所有者和被分享者分享给其他用户。
+<img src="pic/ShareProject.png" alt="ShareProject"></p>
+
+<ul>
+<li>所有者始终可以对 Product 拥有操作权</li>
+<li>所有者可以取消/授予其他用户对 Product 的操作权</li>
+<li>被分享者不能取消自己对 Product 的操作权，但可取消/授予其他用户对 Product 的操作权</li>
+<li>common word 改为由 Admin 统一指定</li>
+</ul>
+
+<h4 id="toc_8">Optimizations</h4>
+
+<h5 id="toc_9">Optimization Info</h5>
+
+<p><img src="pic/OptimizationInfo-1.png" alt="ShareProject">
+<img src="pic/OptimizationInfo-2.png" alt="ShareProject"></p>
+
+<p>更新 Optimization Info 页面布局，并新增 Add Listing 功能，可以为含有多个 Child Listing 的产品保存多份 Copy。在表格上可以进行的操作包括：新增（Create）、删除（Delete）、重命名（点击表格单元进入修改模式）、进入详情页面（Edit）。重新上传 Listings &amp; Campaigns 文件时弹出提示框，用户确认后删除之前所有 Listing 并更新文件。</p>
+
+<p><img src="pic/Optimization-Weight-SelectVariations.png" alt="ShareProject">
+在 Weight Phrases &amp; Words panel 新增 Select Variations 功能。根据3个上传文件对应的3个 parent ASIN (每个文件有且仅有一个 parent ASIN)，显示所有的 Variation(child ASIN) 对应的 Demnsion 供用户选择，以选取更有针对性的数据来撰写 Listing Copy</p>
+
+<ul>
+<li>一个 Variation 一般由一对 Size-Color 确定，但也可能由其他或更多类型的 Demnsion 确定。</li>
+<li>以从每个 parent ASIN 获取的 Variation Demnsion 为准(keepa，variations 个数 与 VariationCSV 不一致时使用 update=1 更新)，只提供文件中存在的 child ASIN 对应的 Demnsion。（如果发现 parent ASIN 被更换了，也需要使用 update=1 更新）</li>
+<li>默认全选，点击 = 选择，再次点击 = 取消选择</li>
+<li><p>通过选择一组或多组 Demnsion 来选择对应的 Variation(child ASIN)，比如在 parent ASIN-B07WJT2PD9 下选择： </p>
+
+<div><pre class="line-numbers"><code class="language-javascript">&quot;attributes&quot;:[{
+  &quot;dimension&quot;:&quot;Size&quot;,
+  &quot;value&quot;:&quot;50x60\&quot;&quot;
+},{
+  &quot;dimension&quot;:&quot;Color&quot;,
+  &quot;value&quot;:&quot;Navy&quot;
+}]</code></pre></div>
+
+<p>即选中 Variation(child ASIN): B07RYPR4J4</p></li>
+<li><p>存在多组 Demnsion 时，只选择其中之一，意味着选择满足该条件的所有 Variation(child ASIN)，比如在 parent ASIN-B07WJT2PD9 下选择：</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">&quot;attributes&quot;:[{
+  &quot;dimension&quot;:&quot;Color&quot;,
+  &quot;value&quot;:&quot;Navy&quot;
+}]</code></pre></div>
+
+<p>意味着选中 Color 为 Navy 的所有 Size，即 Variation(child ASIN): B07RYPR4J4 和 B07RYPHRGF</p>
+
+<ul>
+<li><p>点击 parent ASIN 来选择其所有对应 child ASIN，此时该 parent ASIN 下所有 Demnsion 自动变为选中状态。同理点击同一个 parent ASIN 下所有 Demnsion 时，parent ASIN 也会自动变为选中状态。文件中有可能出现与 parent ASIN 直接对应的数据，由于 parent ASIN 不对应具体的某一 Demnsion，因此我们只在 parent ASIN 选中（包括直接选中以及叉乘结果覆盖了所有 child ASIN）的状态下才会使用这些数据。</p></li>
+<li><p>点击 OK 按钮会将当前选择暂时保存（不能离开当前页面），在 Listing Writer 点击 Save 时将选择保存至数据库。</p></li>
+</ul></li>
+</ul>
+
+<p>点击 OK 按钮时对 Weight Phrases &amp; Words 结果进行过滤，只保留选中的 child ASIN 相关的 Phrases 和 Words 及对应 Weight 结果。同时 Listing Writer 中可用的 Phrases 和 Words 也将刷新。注意这2个 panel 中的 Phrases 和 Words 总数会发生变化，所以颜色的分布也会与全选时不同。  </p>
+
+<p>文件兼容：如果三个文件里有一个 reverse asin 文件（不包含 asin 信息），隐藏 Select Variation 功能。</p>
+
+<h5 id="toc_10">Optimization Details</h5>
+
+<p><img src="pic/Optimization-caldefault.png" alt="ShareProject">
+Generate SP file 模块空格内容根据所选择的 SKU 自动填充<br>
+<em>以下 Sum() 指的是取所有选中产品对应值之和</em></p>
+
+<p>在最近30天的 Data 中查询并计算：</p>
+
+<ul>
+<li><strong>Average conversion</strong> = Sum(units)/Sum(sessions)</li>
+<li><strong>Total Units</strong> = Sum(units)</li>
+<li><strong>Total Gross Sales</strong> = Sum(gross sales)</li>
+<li><strong>Ads Percentage</strong> = Sum(Ads)/Sum(gross sales)</li>
+<li><p><strong>Margin</strong> </p>
+
+<div><pre class="line-numbers"><code class="language-javascript">= Sum(total sales - net refund - refer fees - product cost - shipping cost) 
+  / Sum(total sales)   </code></pre></div></li>
+<li><p><strong>Rank</strong> 默认18</p></li>
+<li><p><strong>Default Bid</strong> 默认以下两者中的较大值</p>
+
+<ul>
+<li><p>Reference 1 (from Sales Report): </p>
+
+<div><pre class="line-numbers"><code class="language-javascript">= (Total Gross Sales / Total Units)   
+  ×（Margin + Ads Percentage) 
+  × Average Conversion</code></pre></div></li>
+<li><p>Reference 2 (from ProductAdsReport): </p>
+
+<div><pre class="line-numbers"><code class="language-javascript">Sum(Ads)/Sum(clicks)</code></pre></div></li>
+</ul></li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,number:/\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,"function":/[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i}),Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^\/])\/(?!\/)(\[.+?]|\\.|[^\/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,lookbehind:!0,greedy:!0}}),Prism.languages.insertBefore("javascript","class-name",{"template-string":{pattern:/`(?:\\\\|\\?[^\\])*?`/,greedy:!0,inside:{interpolation:{pattern:/\$\{[^}]+\}/,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}}}),Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,lookbehind:!0,inside:Prism.languages.javascript,alias:"language-javascript"}}),Prism.languages.js=Prism.languages.javascript;
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
